@@ -1,0 +1,92 @@
+
+input,
+textarea,
+select,
+img{
+    width: 100%;
+    padding: 10px;
+    outline: 0;
+    border: 1px solid black;
+    background: #eee;
+    font-size: 15px;
+    border-radius: 15px;
+    color: black;
+}
+
+.input{
+    width: 100%;
+    padding: 10px;
+    outline: 0;
+    border: 1px solid black;
+    background: #eee;
+    font-size: 15px;
+    border-radius: 15px;
+    color: black;
+}
+
+select {
+    height: 100%;
+    position: absolute;
+    /* left: 0;
+    top: 0; */
+    padding: 10px;
+    color: #192a56;
+    /* cursor: text; */
+    /* transition: .2s; */
+    font-size: 2rem;
+}
+
+label {
+    height: 100%;
+    position: absolute;
+    left: 11px;
+    top: 0;
+    padding: 10px;
+    color: #192a56;
+    cursor: text;
+    transition: .2s;
+    font-size: 2rem;
+    /* border-color: #eee;   */
+}
+input:focus~label,
+input:valid~label,
+textarea:focus~label,
+textarea:valid~label,
+select:focus~label,
+select:valid~label {
+    top: -35px;
+    font-size: 14px
+}
+
+.body_form{
+    align-items: center ;
+    padding: 4rem;
+    border:#999 solid .5rem;
+    border-radius: 2rem;
+}
+.body_form h1{
+    margin-bottom: 4rem;
+    font-size: xx-large;
+}
+
+
+.btn-t {
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.7rem;
+    color: #fff;
+    background: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding: 1.5rem 3rem;
+    width: 100%;
+}
+
+.btn-t:hover {
+    background: var(--green);
+    letter-spacing: .1rem;
+    box-shadow: .5rem .5rem .5rem #192a56;
+    transition: .5s;
+    width: 100%;
+}
+

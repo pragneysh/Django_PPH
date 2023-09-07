@@ -1,0 +1,49 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+
+
+<link rel="stylesheet" href="{% static 'css/add1.css' %}">
+<center>
+    <div class="container mt-[5rem]">
+        <div class="body_form w-[60%] mb-[6rem]">
+            <h1>Update Food Item Details</h1>
+            <form action="{% url 'update_emi' data_emi.emi_id %}" class="justify-between" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="emi_name mt-[4rem] relative">
+                    <input type="text" id="emi_name" required name="emi_name" value="{{data_emi.emi_name}}">
+                    <label for="emi_name"><i class="fa fa-burger"></i>
+                        Food Item Name</label>
+                </div>
+                <div class="categories mt-[4rem]">
+                    <select name="emi_category" id="emi_category" required class="relative" value="{{data_emi.emi_category}}">
+                        <option selected  value="{{data_emi.emi_category}}"> {{data_emi.emi_category}} </option>
+                        {% for emc in emc %}
+                        {% if emc.emc_name != data_emi.emi_category %}
+                            <option value="{{emc.emc_name}}"> {{emc.emc_name}}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class=" price relative mt-[4rem]">
+                    <input type="number" id="price" required name="emi_price" value="{{data_emi.emi_price}}">
+                    <label for="price"><i class="fa-solid fa-inr"></i>
+                        Price</label>
+                </div>
+                <div class="emi_lavel w-full mt-[4rem] relative">
+                    <select name="emi_lavel" id="emi_lavel"  class="relative" value="{{data_emi.emi_lavel}}">
+                        <option value="1"> Regular Package</option>
+                        <option value="2"> Silver Package</option>
+                        <option value="3"> Gold Package</option>
+                        <option value="4"> Premium Package</option>
+                    </select>
+                </div>
+                <div class="submit mt-[4rem] ">
+                    <button type="submit" class="btn-t py-[1.5rem]">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</center>
+
+{% endblock body %}

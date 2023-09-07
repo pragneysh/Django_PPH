@@ -1,0 +1,105 @@
+.container_pac {
+    padding: 2rem 9%;
+    width: 100%;
+    margin: 0;
+}
+
+.h1 {
+    font-family: initial;
+    font-weight: 600;
+    color: hsl(223, 55%, 22%);
+    font-size: 40px;
+}
+
+
+.box_input {
+    border: #192a56 2px solid;
+    width: 100%;
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.box_input .bb {
+    border-bottom: #192a56 2px solid;
+}
+
+.box_input .starter,
+.box_input .Main_course {
+    padding: 10px;
+    padding-top: 0;
+    display: flex;
+    padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    gap: 1.5rem;
+}
+.layer{
+    width: 100% ;
+}
+.option {
+    padding: 10px;
+    width: 100%;
+}
+
+.box_input i {
+    font-size: 10px;
+    color: #192a56;
+    text-align: center;
+}
+
+.box_input p {
+    font-size: 25px;
+    color: #192a56;
+    font-family: initial;
+    padding-left: 5px;
+    margin-bottom: 5px;
+}
+
+select {
+    padding: 10px;
+    color: #192a56;
+    border: 1px solid black;
+    background: #eee;
+    border-radius: 15px;
+    font-size: 2rem;
+    width: 100%;
+}
+
+.btn_t {
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.7rem;
+    color: #fff;
+    background: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding: .8rem 3rem;
+    width: 100%;
+}
+
+.btn_t:hover {
+    background: var(--green);
+    letter-spacing: .1rem;
+    box-shadow: .5rem .5rem .5rem #192a56;
+    transition: .5s;
+    font-size: 2rem;
+    margin-top: .5rem;
+    width: 100%;
+}
+
+.package {
+    width: 100%;
+    text-align: center;
+    border: 2px solid #192a56;
+    padding: 2px;
+    background: var(--black);
+    color: aliceblue;
+    font-size: 25px;
+    border-radius: 10px;
+}
+
+.package:hover {
+    background: var(--green);
+}
+

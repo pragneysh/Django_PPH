@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+
+<br><br><br><br><br><br>
+<center>
+    <div class="container">
+        <img src="{% static 'image/PFE.png' %}" alt="" width="500px">
+        <div class="events">
+            <div class="event1 text-right">
+                <div>
+                    <a href="{% url 'wedding' %}">
+                        <div class="event">
+                            <h3 class="E-tital">WEDDINGS</h3>
+                            <h1 class="number ">01</h1>
+                        </div>
+                    </a>
+                    <div class="text">
+                        <p>On one of the most important days of your life,
+                            we provide a full catering program</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="{% url 'corporate' %}">
+                        <div class="event"> 	
+                            <h3 class="E-tital">CORPORATE</h3>
+                            <h1 class="number ">03</h1>
+                        </div>
+                    </a>
+                    <div class="text">
+                        <p>You can order a corporate full time or part-time service for personnel/staff lunches</p>
+                    </div>
+                </div>
+            </div>
+            <div><img src="{% static 'image/bg_services.webp' %}" alt="">
+            </div>
+            <div class="event2">
+                <div>
+                    <a href="{% url 'festivals' %}">
+                        <div class="event">
+                            <h1 class="number ">02</h1>
+                            <h3 class="E-tital">FESTIVALS</h3>
+                        </div>
+                    </a>
+                    <div class="text">
+                        <p>We are completely capable of serving for big, open, small, adults or kids festivals
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <a href="{% url 'private_parties' %}">
+                        <div class="event">
+                            <h1 class="number ">04</h1>
+                            <h3 class="E-tital">PRIVATE PARTIES</h3>
+                        </div>
+                    </a>
+                    <div class="text">
+                        <p>A private dining room, or a penthouse catering is one of our many great services</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="flex w-full " >
+        <a href="{% url 'add_event_hotel' %}" class="btn-t m-5">BOOK YOUR EVENT IN HOTEL</a>
+        <a href="{% url 'add_event' %}" class="btn-t m-5">BOOK YOUR HOME EVENT</a>
+
+        </div>
+    </div>
+</center>
+
+{% endblock body %}

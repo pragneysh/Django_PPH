@@ -1,0 +1,104 @@
+
+    .menu .box-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        gap: 1.5rem;
+    }
+
+    .menu .box-container .box {
+        background: #fff;
+        border: 1rem solid rgba(0, 0, 0, 0.2);
+        border-radius: .5rem;
+        box-shadow: var(--box-shadow);
+    }
+
+    .menu .box-container .box:hover{
+        box-shadow: 0rem .5rem .5rem #192a56;
+        transition: .5s;
+    }
+
+    .menu .box-container .box .image {
+        height: 25rem;
+        width: 100%;
+        padding: 1.5rem;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .menu .box-container .box .image img {
+        width: 100%;
+        height: 100%;
+        border-radius: .5rem;
+        object-fit: cover;
+        border: 1px solid #ccc  ;
+    }
+
+    .menu .box-container .box .image .fa-heart {
+        position: absolute;
+        top: 2.5rem;
+        right: 2.5rem;
+        height: 5rem;
+        width: 5rem;
+        line-height: 5rem;
+        text-align: center;
+        font-size: 2rem;
+        background: #fff;
+        border-radius: 50%;
+        color: #27ae60;
+    }
+
+
+
+    /* .menu .box-container .box .image .fa-heart:hover {
+        color: #fff;
+        background: var(--green);
+        box-shadow: var(--box-shadow);
+    } */
+
+    .menu .box-container .box .contant {
+        padding: 2rem;
+        padding-top: 0;
+    }
+
+    .menu .box-container .box .contant .stars {
+        padding-bottom: 1rem;
+    }
+
+    .menu .box-container .box .contant .stars i {
+        font-size: 1.7rem;
+        color: #27ae60;
+    }
+
+    .menu .box-container .box .contant h3 {
+        color: #192a56;
+        font-size: 2.5rem;
+    }
+
+    .menu .box-container .box .contant p {
+        color: var(--light-color);
+        font-size: 1.6rem;
+        padding: .5rem 0;
+        line-height: 1.5;
+    }
+
+    .menu .box-container .box .contant .price {
+        color: var(--green);
+        font-size: 2.5rem;
+    }
+
+    .btn {
+        margin-top: 1rem;
+        display: inline-block;
+        font-size: 1.7rem;
+        color: #fff;
+        background: var(--black);
+        border-radius: .5rem;
+        cursor: pointer;
+        padding: .8rem 3rem;
+    }
+    
+    .btn:hover {
+        background: var(--green);
+        letter-spacing: .1rem;
+    }
+

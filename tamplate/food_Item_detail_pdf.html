@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/display.css' %}">
+    <style>
+        table {
+            width: 100%;
+        }
+
+        .main-sparkline13-hd h1 {
+            font-size: 30px;
+            margin-bottom: 1.5rem;
+        }
+
+        thead tr {
+            padding-top: 5px;
+            border: gray solid 1px;
+            text-align: left;
+            background: #37e07d;
+            color: darkgreen;
+            font-size: xx-large;
+        }
+
+        tbody tr td {
+            font-size: xx-large;
+            border: green solid 2px;
+            padding-left: 2px;
+        }
+
+        thead tr th {
+            font-size: xx-large;
+            border: green solid 2px;
+            padding-left: 2px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <BR>
+    <div class="container">
+        <table>
+            <thead class="border-gray-800 ">
+                <tr>
+                    <th data-field="food_id">ID</th>
+                    <th data-field="food_name" data-editable="true">Food Item</th>
+                    <th data-field="food_image" data-editable="true" class="text-center">Food Image</th>
+                    <th data-field="categories" data-editable="true">Categories</th>
+                    <th data-field="price" class="text-center" data-editable="true">Price <i
+                            class="fa-solid fa-inr"></i>
+                    </th>
+                    <th data-field="description" data-editable="true"> Description</th>
+                    <!-- <th data-field="action" class="text-center">Action</th> -->
+                </tr>
+            </thead>
+            <tbody id="items">
+                {% for fi in fi %}
+                <tr class="item" id="item">
+                    <td>{{fi.fi_id}}</td>
+                    <td>{{fi.food_name}}</td>
+                    <td>
+                        <center> <img src="media/{{fi.food_image}}" width="100px" alt="{{fi.food_image}}">
+                        </center>
+                    </td>
+                    <td>{{fi.categories}}</td>
+                    <td class="text-center">{{fi.food_price}} </td>
+                    <td>{{fi.food_description}}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+</body>
+
+</html>

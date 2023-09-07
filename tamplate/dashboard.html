@@ -1,0 +1,188 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+
+<style>
+    .card {
+        padding: 1.5rem;
+        background-color: #bbf7d0;
+        width: 100%;
+        border-radius: 20px;
+        border-bottom: 5px solid rgb(22 163 74);
+        margin: 13px;
+    }
+
+    .card:hover {
+        box-shadow: 0px 5px 5px rgb(7, 94, 39);
+    }
+
+    .content {
+        justify-content: space-between;
+        display: flex;
+        padding: 0 20px;
+    }
+
+    .icon_n {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        background: rgb(22 163 74);
+        border-radius: 50%;
+        text-align: center;
+        justify-content: center;
+        box-shadow: 0px 5px 10px rgb(7, 94, 39);
+        color: aliceblue;
+        overflow: hidden;
+    }
+    .icon_n img{
+        height: 100%;
+        width: 100%;
+    }
+    .text {
+        text-align: left;
+    }
+
+    h3 {
+        color: rgb(102, 102, 102);
+        text-align: left;
+        font-size: 30px;
+    }
+
+    h5 {
+        color: black;
+        text-align: right;
+        justify-content: center;
+        font-size: 40px;
+    }
+</style>
+<br>
+<section class="px-[50px]">
+    <br>
+    <div class="">
+        <div class="cards flex">
+            <div class="card">
+                <a href="{% url 'customer_detail' %}">
+                <div class="content">
+                        <div class="icon_n">
+                            <img src="{% static 'image/users.png' %}" alt="">
+                        </div>
+                        <div class="text">
+                            <h3 class="left-3">total customer</h3>
+                            <h5>{{customer}}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{% url 'table_booking_detail_today' %}">
+                <div class="content">
+                        <div class="icon_n">
+                            <img src="{% static 'image/tb.png' %}" alt="" width="100%">
+                        </div>
+                        <div class="text">
+                            <h3 class="left-3">Today's table bookings</h3>
+                            <h5>{{tb}}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{% url 'event_display_today' %}">
+                <div class="content">
+                        <div class="icon_n">
+                            <img src="{% static 'image/events.png' %}" alt="" width="100%">
+                        </div>
+                        <div class="text">
+                            <h3 class="left-3">Today's events</h3>
+                            <h5>{{event}}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="cards flex">
+            <div class="card">
+                <a href="{% url 'order' %}">  
+                <div class="content">
+                        <div class="icon_n">
+                            <img src="{% static 'image/order.png' %}" alt="">
+                        </div>
+                        <div class="text">
+                            <h3 class="left-3">total orders</h3>
+                            <h5>{{order}}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{% url 'panding_order' %}">
+                <div class="content">
+                        <div class="icon_n">
+                            <img src="{% static 'image/new_order.png' %}" alt="" width="100%">
+                        </div>
+                        <div class="">
+                            <h3 class="left-3">new orders</h3>
+                            <h5>{{new_order}}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{% url 'on_delivery' %}">
+                <div class="content">
+                        <div class="icon_n">
+                            <img src="{% static 'image/food_on_d.png' %}" alt="" width="100%">
+                        </div>
+                        <div class="">
+                            <h3 class="left-3">On Deliver Orders</h3>
+                            <h5>{{on_delevery}}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="cards flex">
+            <div class="card">
+                <a href="{% url 'food_category' %}">
+                <div class="content">
+                        <div class="icon_n">
+                            <img src="{% static 'image/fc.png' %}" alt="" width="100%">
+                        </div>
+                        <div class="text">
+                            <h3 class="left-3">total food categories</h3>
+                            <h5>{{fc}}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{% url 'food_Item_detail' %}">
+                <div class="content">
+                        <div class="icon_n">
+                            <img src="{% static 'image/fi.png' %}" alt="" width="100%">
+                        </div>
+                        <div class="text">
+                            <h3 class="left-3">total food items</h3>
+                            <h5>{{fi}}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="{% url 'hall_booking_today' %}">
+                <div class="content">
+                        <div class="icon_n">
+                            <img src="{% static 'image/hb.png' %}" alt="" width="100%">
+                        </div>
+                        <div class="text">
+                            <h3 class="left-3">Today's Hall Bookings</h3>
+                            <h5>{{hb}}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<Style>
+    .nothig {
+    top: 100px;
+    position: absolute;
+    left: 705px;
+    margin: 0 auto;
+}
+
+.alert {
+    background-color: rgba(11, 15, 13, 0.5);
+    font-size: 30px;
+    padding: 10px 30px;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    border: solid black 1px;
+    width: 50rem;
+}
+
+.icon a i {
+    color: white;
+}
+</Style>
+<BR>    </BR>
+<section class="mt-[70px] mb-[125px]">
+    {% for message in messages %}
+    <center>
+        <div class="nothig">
+            <div class="alert" role="alert">
+                <div class="text">
+                    {{ message }}
+                </div>
+                <div class="icon">
+                    <a href="{% url 'login_page' %}">
+                        <i class="fa fa-times" id="close" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </center>
+    {% endfor %}
+    <div class="login_ragister">
+        <div class="form-box mt-[-20px] h-[450px]">
+
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn text-xl" onclick="login()">Log In</button>
+                <button type="button" class="toggle-btn text-xl" onclick="ragister()">Register</button>
+            </div>
+
+            <FORM id="log_in" class="INPUT-GROUP" action="{% url 'loginuser' %}" method="POST">
+                {% csrf_token %}
+                <input type="number" class="inpte-filde  text-xl" placeholder="Mobile No" required name="l_no">
+                <input type="password" class="inpte-filde  text-xl" placeholder="password" required
+                    name="l_password"><br><br><br><br><br>
+                <button type="submit" class="submit-btn  text-xl">
+                    Log In
+                </button>
+            </FORM>
+            <FORM id="ragister" class="INPUT-GROUP" action="{% url 'adduser' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" class="inpte-filde  text-xl" placeholder="Name" required name="name">
+                <input type="tel" class="inpte-filde text-xl" placeholder="Contect NO" required name="contact"
+                    maxlength="10" minlength="10">
+                <input type="email" class="inpte-filde text-xl" placeholder="Email ID" required name="email">
+                <input type="password" class="inpte-filde text-xl" placeholder="Password" required name="password">
+                <input type="password" class="inpte-filde text-xl" placeholder="Password" required name="re_password">
+                <br><br>
+                <button type="submit" class="submit-btn text-xl">Register</button>
+            </FORM>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    var x = document.getElementById("log_in");
+    var y = document.getElementById("ragister");
+    var z = document.getElementById("btn");
+    function ragister() {
+        x.style.left = "-400px";
+        y.style.left = "40px";
+        z.style.left = "110px";
+    }
+    function login() {
+        x.style.left = "40px";
+        y.style.left = "400px";
+        z.style.left = "0px";
+    }
+</script>
+{% endblock body %}

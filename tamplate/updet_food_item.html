@@ -1,0 +1,62 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+
+
+<link rel="stylesheet" href="{% static 'css/add1.css' %}">
+<center>
+    <div class="container mt-[5rem]">
+        <div class="body_form w-[60%] mb-[6rem]">
+            <h1>Update Food Item Details</h1>
+            <form action="{% url 'update_fi' data_fi.fi_id %}" class="justify-between" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="food_name mt-[4rem] relative">
+                    <input type="text" id="food_name" required name="food_name" value="{{data_fi.food_name}}">
+                    <label for="food_name"><i class="fa fa-burger"></i>
+                        Food Item Name</label>
+                </div>
+                <div class="categories mt-[4rem]">
+                    <select name="categories" id="categories" required class="relative" value="{{data_fi.categories}}">
+                        <option selected  value="{{data_fi.categories}}"> {{data_fi.categories}} </option>
+                        {% for fc in fc %}
+                        {% if fc.fc_name != data_fi.categories %}
+                            <option value="{{fc.fc_name}}"> {{fc.fc_name}}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class=" price relative mt-[4rem]">
+                    <input type="number" id="price" required name="food_price" value="{{data_fi.food_price}}">
+                    <label for="price"><i class="fa-solid fa-inr"></i>
+                        Price</label>
+                </div>
+                <div class=" person relative mt-[4rem]">
+                    <input type="text" id="food_description" required name="food_description"
+                        value="{{data_fi.food_description}}">
+                    <label for="food_description"><i class="fa fa-file-text"></i> Food Ddescription </label>
+                </div>
+
+                {% if data.user_image != '' %}
+                <div class="image relative mt-[4rem] ">
+                    <img id="output" src="{{data_fi.food_image.url}}"  class="mt-[4rem] p-[2rem]" />
+                </div>
+                {% endif %}
+                <div class="mt-[4rem]">
+                    <a href="{% url 'edit_food_image' data_fi.fi_id %}" class="btn-t mt-[4rem]">UPDATE YOUR IMAGE </a>
+                </div>
+                <div class="submit mt-[4rem] ">
+                    <button type="submit" class="btn-t py-[1.5rem]">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</center>
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+        var src1 = image.src;
+    };
+</script>
+{% endblock body %}

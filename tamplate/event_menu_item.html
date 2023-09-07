@@ -1,0 +1,78 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<BR>
+<div class="container">
+    <div class="sparkline13-list">
+        <div class="sparkline13-hd">
+            <div class="main-sparkline13-hd">
+                <h1>Event Food Items details </h1>
+            </div>
+        </div>
+        <div class="sparkline13-graph">
+            <div class="datatable-dashv1-list custom-datatable-overright">
+                <div class="align-middle">  
+                    <select class="form-control">
+                        <option value="">Export Basic</option>
+                        <option value="all">Export All</option>
+                        <option value="selected">Export Selected</option>
+                    </select>
+                </div>
+                <div id="toolbar" class="flex justify-between">
+                    <div class=" m-[1rem] mb-[3rem] createitem">
+                        <a href="{% url 'add_event_menu_item' %}"
+                            class="p-[1rem] border-green-900 text-green-900 hover:bg-green-400 border-[2px] rounded-[10px] bg-white ">
+                            <i class="fa fa-cutlery" aria-hidden="true"> </i> &nbsp; ADD NEW FOOD ITEM
+                        </a>
+                    </div>
+                    <div
+                        class=" align-middle p-[1rem] border-green-900 text-green-900 border-[2px] rounded-[10px] m-[1rem] ">
+                        <i class="fa fa-search h-fit" aria-hidden="true"></i><input type="text" class="h-fit" id="nothing"
+                            placeholder="search..." onkeyup="search()">
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <thead class="border-gray-800 ">
+                            <tr>
+                                <th data-field="food_id">ID</th>
+                                <th data-field="food_name" data-editable="true">Food Item</th>
+                                <th data-field="categories" data-editable="true">Categories</th>
+                                <th data-field="price" class="text-center" data-editable="true">Price <i class="fa-solid fa-inr"></i>
+                                </th>
+                                <th>Package</th>
+                                <th data-field="action" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                    <tbody id="items">
+                        {% for emi in emi %}
+                        <tr class="item" id="item">
+                            <td>{{emi.emi_id}}</td>
+                            <td>{{emi.emi_name}}</td>
+                            <td>{{emi.emi_category}}</td>
+                            <td class="text-center">{{emi.emi_price}} ₹</td>
+                            <td>
+                                {% if emi.emi_lavel == 4 %} Premium Package
+                                {% elif emi.emi_lavel == 2 %} Silver Package
+                                {% elif emi.emi_lavel == 3 %} Gold Package
+                                {% else %} Regular Package
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="flex justify-center">
+                                    <a href="{% url 'edit_emi' emi.emi_id %}"><img src="{% static 'image/edit.png' %}"
+                                            width="30px" height="30px"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="{% url 'delete_emi' emi.emi_id %}"><img src="{% static 'image/delete.png' %}"
+                                            width="30px" height="30px" onclick="return confirm('are you confirm to delete food item ?');"></a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

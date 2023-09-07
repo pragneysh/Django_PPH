@@ -1,0 +1,214 @@
+section {
+    padding: 2rem 9%;
+}
+
+section:nth-child(even) {
+    background: #fff;
+}
+
+/* Store info section styles*/
+.table-container{
+    width: 70%;
+    margin: auto;
+}
+.storeInfo_wrapper {
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+.storeInfo__item {
+    padding: 20px 30px;
+    text-align: center;
+    align-items: center;
+    border-radius: 12px;
+    width: fit-content;
+    border: #192a56 solid 1px;
+    margin: 0 auto;
+    width: 23rem;
+    background-color: #eee;
+}
+
+.storeInfo__icon {
+    margin-bottom: 1.5rem;
+    /* align-items: center; */
+}
+
+.storeInfo__icon img {
+    margin: auto 2.5rem;
+    /* padding: auto; */
+    width: 7rem;
+}
+
+.storeInfo__title {
+    color: #555;
+    margin-bottom: .2rem;
+    font-size: 2rem;
+}
+
+.storeInfo__text {
+    color: #192a56;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: bolder;
+}
+
+form {
+    width: 100%;
+}
+
+.inputbox {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+.f-name {
+    width: 50%;
+    position: relative;
+    margin: 30px 10px 0 30px;
+}
+
+.contact {
+    width: 50%;
+    position: relative;
+    margin: 30px 30px 0 10px;
+
+}
+
+.email {
+    width: 50%;
+    position: relative;
+    margin: 30px 10px 0 30px;
+}
+
+.person {
+    width: 50%;
+    position: relative;
+    margin: 30px 30px 0 10px;
+}
+
+.date {
+    width: 50%;
+    position: relative;
+    margin: 30px 10px 0 30px;
+}
+
+.time {
+    width: 50%;
+    position: relative;
+    margin: 30px 30px 0 10px;
+}
+
+.tableType {
+    width: 50%;
+    position: relative;
+    margin: 30px 10px 0 30px;
+}
+
+
+.placement {
+    width: 50%;
+    position: relative;
+    margin: 30px 30px 0 10px;
+    padding-bottom: 50px;
+}
+
+.massage {
+    width: 100%;
+    position: relative;
+    margin: 30px 30px 0 30px;
+}
+
+.submit {
+    width: 50%;
+    position: relative;
+    margin: 30px 30px 0 0px;
+}
+
+.reset {
+    width: 50%;
+    position: relative;
+    margin: 30px 60px 0 0px;
+
+}
+
+.btn-t {
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.7rem;
+    color: #fff;
+    background: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding: .8rem 3rem;
+    width: 100%;
+}
+
+.btn-t:hover {
+    background: var(--green);
+    letter-spacing: .1rem;
+    box-shadow: .5rem .5rem .5rem #192a56;
+    transition: .5s;
+    font-size: 2rem;
+    margin-top: .5rem;
+    width: 100%;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    /* padding: 10px; */
+    outline: 0;
+    border: 1px solid black;
+    background: #eee;
+    font-size: 2rem;
+    color: #192a56;
+    border-radius: 15px;
+    color: black;
+
+}
+
+select {
+    height: 100%;
+    position: absolute;
+    /* left: 0;
+    top: 0; */
+    padding: 10px;
+    color: #192a56;
+    /* cursor: text; */
+    /* transition: .2s; */
+    font-size: 2rem;
+}
+
+label {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    color: #192a56;
+    cursor: text;
+    transition: .2s;
+    font-size: 2rem;
+    /* border-color: #eee;   */
+}
+
+form button {
+    margin: 30px;
+}
+
+input:focus~label,
+input:valid~label,
+textarea:focus~label,
+textarea:valid~label,
+select:focus~label,
+select:valid~label {
+    top: -35px;
+    font-size: 14px
+}
+
+
+/* 
+#  create items */
+

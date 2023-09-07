@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/add1.css' %}">
+<Style>
+    .nothig {
+    top: 100px;
+    position: absolute;
+    left: 705px;
+    margin: 0 auto;
+}
+
+.alert {
+    /* position: relative; */
+    background-color: rgba(11, 15, 13, 0.5);
+    font-size: 30px;
+    padding: 10px 30px;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    border: solid black 1px;
+    width: 50rem;
+}
+
+.icon a i {
+    color: white;
+}
+</Style>
+<br><br><br>
+<br><br><br>
+<center>
+
+<div class="container">
+    {% for message in messages %}
+    <center>
+        <div class="nothig">
+            <div class="alert" role="alert">
+                <div class="text">
+                    {{ message }}
+                </div>
+                <div class="icon">
+                    <a href="{% url 'add_event_hotel' %}">
+                        <i class="fa fa-times" id="close" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </center>
+    {% endfor %}
+    <div class="body_form w-[60%] mb-[6rem]" >
+        <h1> Book Event</h1>
+        <form action="{% url 'add_event_hotel' %}" class="justify-between" method="POST">
+            {% csrf_token %}
+            <div class="fc_name w-full  relative mt-[4rem]">
+                <input type="text" id="event_what" required name="event_what">
+                <label for="event_what">
+                    Event Info</label>
+            </div>
+            <div class="fc_name w-full  relative mt-[4rem]">
+                <input type="number" id="number_of_person" required name="number_of_person">
+                <label for="number_of_person">
+                    NO of Person</label>
+            </div>
+            <div class="fc_name w-full  relative mt-[4rem]">
+                <input type="number" id="alt_contactno" required name="alt_contactno">
+                <label for="alt_contactno">
+                    Contact NO </label>
+            </div>
+            <div class="fc_name w-full  relative mt-[4rem]">
+                <input type="date" id="delivery_add" required name="event_date_time">
+            </div>
+            <div class="fc_name w-full  relative mt-[4rem]">
+                <select name="S_time" id="time">
+                    <option selected disabled>Starting Time</option>
+                    <option value="08:00 AM">08:00 AM</option>
+                    <option value="09:00 AM">09:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="12:00 AM">12:00 AM</option>
+                    <option value="01:00 PM">01:00 PM</option>
+                    <option value="02:00 PM">02:00 PM</option>
+                    <option value="03:00 PM">03:00 PM</option>
+                    <option value="04:00 PM">04:00 PM</option>
+                    <option value="05:00 PM">05:00 PM</option>
+                    <option value="06:00 PM">06:00 PM</option>
+                    <option value="07:00 PM">07:00 PM</option>
+                    <option value="08:00 PM">08:00 PM</option>
+                    <option value="09:00 PM">09:00 PM</option>
+                    <option value="10:00 PM">10:00 PM</option>
+                    <option value="11:00 PM">11:00 PM</option>
+                </select>
+            </div>
+            <div class="fc_name w-full  relative mt-[4rem]">
+                <select name="E_time" id="time">
+                    <option selected disabled>Ending Time</option>
+                    <option value="08:00 AM">08:00 AM</option>
+                    <option value="09:00 AM">09:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="12:00 AM">12:00 AM</option>
+                    <option value="01:00 PM">01:00 PM</option>
+                    <option value="02:00 PM">02:00 PM</option>
+                    <option value="03:00 PM">03:00 PM</option>
+                    <option value="04:00 PM">04:00 PM</option>
+                    <option value="05:00 PM">05:00 PM</option>
+                    <option value="06:00 PM">06:00 PM</option>
+                    <option value="07:00 PM">07:00 PM</option>
+                    <option value="08:00 PM">08:00 PM</option>
+                    <option value="09:00 PM">09:00 PM</option>
+                    <option value="10:00 PM">10:00 PM</option>
+                    <option value="11:00 PM">11:00 PM</option>
+                </select>
+            </div>
+            <div class="submit mt-[4rem]">
+                <button type="submit" class="btn-t" >SUBMIT</button>
+            </div>
+        </form>
+    </div>
+</div>
+</center>
+
+{% endblock body %}

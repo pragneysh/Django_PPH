@@ -1,0 +1,69 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<BR>
+<div class="container">
+    <div class="sparkline13-list">
+        <div class="sparkline13-hd">
+            <div class="main-sparkline13-hd">
+                <h1>Food Category Detail Table</h1>
+            </div>
+        </div>
+        <div class="sparkline13-graph">
+            <div class="datatable-dashv1-list custom-datatable-overright">
+                <div class="align-middle">
+                    <select class="form-control">
+                        <option value="">Export Basic</option>
+                        <option value="all">Export All</option>
+                        <option value="selected">Export Selected</option>
+                    </select>
+                </div>
+                <div id="toolbar" class="flex justify-between">
+                    <div class=" m-[1rem] mb-[3rem] createitem">
+                        <a href="{% url 'add_event_menu_category' %} "
+                            class="p-[1rem] border-green-900 text-green-900 hover:bg-green-400 border-[2px] rounded-[10px] bg-white ">
+                            <i class="fa fa-cutlery" aria-hidden="true"> </i> &nbsp; ADD NEW EVENT FOOD CATEGORY
+                        </a>
+                    </div>
+                    <div
+                        class=" align-middle p-[1rem] border-green-900 text-green-900 border-[2px] rounded-[10px] m-[1rem] ">
+                        <i class="fa fa-search h-fit" aria-hidden="true"></i><input type="text" class="h-fit"
+                            placeholder="search...">
+                    </div>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <thead class="border-gray-800 ">
+                        <tr>
+                            <th data-field="id">Category ID</th>
+                            <th data-field="name" data-editable="true">Category Name</th>
+                            <th data-field="contact" data-editable="true">Category Description</th>
+                            <th>Total Food</th>
+                            <th class="text-center"> Action</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    {% for emc in emc %}
+                    <tr class="">
+                        <td>{{emc.emc_id}}</td>
+                        <td>{{emc.emc_name}}</td>
+                        <td>{{emc.emc_description}}</td>
+                        <td><a href="{% url 'similar_efi'  emc.emc_id %}">See All Foods</a></td>
+                        <td>
+                            <div class="flex justify-center">
+                                <a href="{% url 'edit_emc' emc.emc_id %}"><img src="{% static 'image/edit.png' %}"
+                                        width="30px" height="30px"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="{% url 'delete_emc' emc.emc_id %}" class=""><img
+                                        src="{% static 'image/delete.png' %}" width="30px" height="30px"></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock body %}

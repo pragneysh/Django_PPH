@@ -1,0 +1,31 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+
+
+<link rel="stylesheet" href="{% static 'css/add1.css' %}">
+<center>
+    
+    <div class="container mt-[5rem]">
+        <div class="body_form w-[60%] mb-[6rem]" >
+            <h1> Food Items Category</h1>
+            <form action="{% url 'update_sa' sa.sa_id %}" class="justify-between" method="POST">
+                {% csrf_token %}
+                <div class="sa_name w-full  relative mt-[4rem]">
+                    <input type="text" id="sa_name" required name="sa_name" value="{{sa.sa_name}}">
+                    <label for="sa_name">
+                        Update Service Area Name</label>
+                </div>
+                <div class="sa_description w-full  relative mt-[4rem]">
+                <input type="number" name="pin_code" value="{{sa.pin_code}}" class="h-[50px]">
+                    <label for="sa_description">
+                        Update Service Area Pin Code</label>
+                </div>
+                <div class="submit mt-[4rem]">
+                    <button type="submit" class="btn-t">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</center>
+{% endblock body %}

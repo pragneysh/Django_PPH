@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/event.css' %}">
+
+<center>
+    <div>
+        <img src="{% static 'image/fbg.jpg' %}" alt="" width="100%">
+    </div>
+    <div class="e_container ">
+        <div class="sub_event">
+            <a href="{% url 'services' %}"><h1>Services</h1></a>
+            <ul>
+                <li><a href="{% url 'wedding' %}">Weddings</a> </li>
+                <li><a href="{% url 'corporate' %}">Corporate</a></li>
+                <li><a href="{% url 'festivals' %}">Festivals</a></li>  
+                <li><a href="{% url 'private_parties' %}">Private Parties</a> </li>
+            </ul>
+            <a href="{% url 'add_event' %}">
+                <button class="btn_t">BOOK YOUR EVENT</button>
+            </a>
+        </div>
+        <div class="e_info">
+            <div class="images">
+                <div class="image">
+                    <img src="{% static 'image/fe1.png' %}" alt="" width="100%" height="100%">
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/fe2.jpg' %}" alt="" width="100%" height="100%">
+                </div>
+            </div>
+            <div class="images">
+                <div class="image">
+                    <img src="{% static 'image/fe3.jpg' %}" alt="" width="100%" height="100%">
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/fe4.jpg' %}" alt="" width="100%" height="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</center>
+
+{% endblock body %}

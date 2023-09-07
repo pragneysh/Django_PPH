@@ -1,0 +1,64 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<BR>
+<div class="container">
+    <div class="sparkline13-list">
+        <div class="sparkline13-hd">
+            <div class="main-sparkline13-hd">
+                <h1>Customer detail table</h1>
+            </div>
+        </div>
+        <div class="sparkline13-graph">
+            <div class="datatable-dashv1-list custom-datatable-overright">
+                <div id="toolbar" class="flex justify-between">
+                    <div class="align-middle">
+                        <select class="form-control">
+                            <option value="">Export Basic</option>
+                            <option value="all">Export All</option>
+                            <option value="selected">Export Selected</option>
+                        </select>
+                    </div>
+                    <div
+                        class=" align-middle p-[1rem] border-green-900 text-green-900 border-[2px] rounded-[10px] m-[1rem] ">
+                        <i class="fa fa-search h-fit" aria-hidden="true"></i><input type="text" class="h-fit"
+                            placeholder="search...">
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <thead class="border-gray-800 ">
+                            <tr>
+                                <th data-field="id">ID</th>
+                                <th data-field="image" data-editable="true">Image</th>
+                                <th data-field="name" data-editable="true">Customer Name</th>
+                                <th data-field="contact" data-editable="true">Contact</th>
+                                <th data-field="email" data-editable="true">Email</th>
+                                <th data-field="passwosd" data-editable="true">Passwosd</th>
+                                <th data-field="address" data-editable="true">Address</th>
+                                <th data-field="city" data-editable="true">Ciry</th>
+                                <th data-field="pin_code" data-editable="true">Pin Code</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        {% for user in user %}
+                        <tr class="">
+                            <td>{{user.u_id}}</td>
+                            <td class="p-2"><img src="media/{{user.user_image}}" width="80px" alt=""></td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.contact}}</td>
+                            <td>{{user.email}}</td>
+                            <td><input type="password" value="{{user.password}}" class="w-[100px]" readonly></td>
+                            <td>{{user.u_address}}</td>
+                            <td>{{user.u_city}}</td>
+                            <td>{{user.u_pin_code}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

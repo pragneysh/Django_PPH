@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/add1.css' %}">
+<br><br><br><br><br><br><BR></BR>
+<Style>
+    .nothig {
+        top: 100px;
+        position: absolute;
+        left: 705px;
+        margin: 0 auto;
+        z-index: 5;
+    }
+
+    .alert {
+        background-color: rgba(11, 15, 13, 0.5);
+        font-size: 30px;
+        padding: 10px 30px;
+        display: flex;
+        border-radius: 10px;
+        justify-content: space-between;
+        border: solid black 1px;
+        width: fit-content;
+    }
+
+    .icon {
+        padding-left: 50px;
+    }
+
+    .icon a i {
+        color: white;
+
+    }
+    .map{
+        box-shadow: 0px 0px 50px gray;
+
+    }
+</Style>
+<center>
+    {% for message in messages %}
+    <center>
+        <div class="nothig">
+            <div class="alert" role="alert">
+                <div class="text">
+                    {{ message }}
+                </div>
+                <div class="icon">
+                    <a href="{% url 'atl_cont' %}">
+                        <i class="fa fa-times" id="close" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </center>
+    {% endfor %}
+    <div class="container mt-[5rem]">
+        <div class="body_form w-[60%] mb-[6rem]" >
+            <h1> Fill Your Details</h1>
+            <form action="{% url 'alt_form' %}" class="justify-between" method="POST">
+                {% csrf_token %}
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="number" id="fc_name" required name="alt_cont" value="{{user.contact}}">
+                    <label for="fc_name">
+                        Alter Native Contact Number</label>
+                </div>
+                <div class="fc_description w-full  relative mt-[4rem]">
+                <input type="text" name="alt_add" id="alt_add" required value="{{user.u_address}}, {{ user.u_city}},{{user.u_pin_code}}">
+                    <label for="alt_add">
+                        Alter Native Address </label>
+                </div>
+                <div class="submit mt-[4rem] flex gap-9">
+                    <button type="submit" class="btn-t" onclick="add_food_category()">SUBMIT</button>
+                    <a href="{% url 'cancel_order' %}" type="submit" class="btn-t">CANCEL ORDER </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</center>
+{% endblock body %}

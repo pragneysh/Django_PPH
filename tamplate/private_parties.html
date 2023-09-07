@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/event.css' %}">
+<br><br><br><br><br>
+
+<center>
+    <div>
+        <img src="{% static 'image/pebg.jpg' %}" alt="">
+    </div>
+    <div class="e_container ">
+        <div class="sub_event">
+            <a href="{% url 'services' %}"><h1>Services</h1></a>
+            <ul>
+                <li><a href="{% url 'wedding' %}">Weddings</a> </li>
+                <li><a href="{% url 'corporate' %}">Corporate</a></li>
+                <li><a href="{% url 'festivals' %}">Festivals</a></li>
+                <li><a href="{% url 'private_parties' %}">Private Parties</a> </li>
+            </ul>
+            <a href="{% url 'add_event' %}">
+                <button class="btn_t">BOOK YOUR EVENT</button>
+            </a>
+        </div>
+        <div class="e_info">
+            <div class="images">
+                <div class="image">
+                    <img src="{% static 'image/pe1.png' %}" alt="" height="300px">
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/pe2.jpg' %}" alt="">
+                </div>
+            </div>
+            <div class="images">
+                <div class="image">
+                    <img src="{% static 'image/pe3.jpg' %}" alt="">
+                </div>
+                <div class="image">
+                    <img src="{% static 'image/pe4.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</center>
+
+{% endblock body %}

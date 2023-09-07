@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Invoice</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<table width="100%" border="1px">
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Qty</th>
+			<th>Rate</th>
+			<th>Amount</th>
+			<th>Action</th>
+		</tr>
+		<tr class="hello len">
+			<td><input type="text" name="name0" id="name0"></td>
+			<td><textarea rows="3" name="description0" id="description0"></textarea></td>
+			<td><input type="text" name="qty0" id="qty0"></td>
+			<td><input type="text" name="rate0" id="rate0" onblur="calculation()"></td>
+			<td><input type="text" name="amount0" id="amount0"></td>
+			<td><button id="addbtn">+</button></td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			let i=0;
+			$('#addbtn').click(function(){
+				i++;
+				$(`<tr class="len">
+			<td><input type="text" name="name`+i+`" id="name`+i+`"></td>
+			<td><textarea rows="3" name="description`+i+`" id="description`+i+`"></textarea></td>
+			<td><input type="text" name="qty`+i+`" id="qty`+i+`"></td>
+			<td><input type="text" name="rate`+i+`" id="rate`+i+`" onblur="calculation()"></td>
+			<td><input type="text" name="amount`+i+`" id="amount`+i+`"></td>
+			<td><button class="removebtn">x</button></td>
+		</tr>`).insertAfter('.hello');
+			});
+		});
+
+		$(document).on('click', 'button.removebtn', function(){
+			$(this).parents('tr').remove();
+		})
+	</script>
+
+	<script type="text/javascript">
+		function calculation()
+		{
+			let a = document.getElementsByClassName('len').length;
+			var amt=0;
+			let i;
+			for(i=0;i<a;i++)
+			{
+				var qty = "qty"+i;
+				var rate = "rate"+i;
+				var amount = "amount"+i;	
+				var qty = document.getElementById(qty).value;
+				var rate = document.getElementById(rate).value;
+				amt = qty * rate;
+				document.getElementById(amount).value = amt;
+			}
+		}
+	</script>
+</body>
+</html>

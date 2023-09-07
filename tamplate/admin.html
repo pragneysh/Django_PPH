@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login page in HTML</title>
+        <link rel="stylesheet" href="{% static 'css/admin_login.css' %}">
+        <link rel="stylesheet"
+            href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+            />
+        <script src="https://kit.fontawesome.com/cd29cfecea.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        {% for message in messages %}
+        <center>
+        <div class="nothig">
+        <div class="alert" role="alert">
+            <div class="text">
+                {{ message }}
+            </div>
+            <div class="icon">
+                <a href="">
+                    <i class="fa fa-times" id="close" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div></div></center>
+        {% endfor %}
+        <form action="{% url 'login_admin' %}" method="POST">
+            {% csrf_token %}
+            <div class="headingsContainer">
+                <h1>Admin Login</h1>
+            </div>
+            <div class="mainContainer">
+                <label for="username">Your username</label>
+                <input type="text" placeholder="Enter Username"
+                    name="admin_name" required>
+                <br><br>
+                <label for="pswrd">Your password</label>
+                <input type="password" placeholder="Enter Password" name="pswrd"
+                    required>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </body>
+
+</html>

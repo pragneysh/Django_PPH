@@ -1,0 +1,94 @@
+.e_container {
+    margin: 1% 15% 1% 15%;
+    /* background: #444; */
+    display: flex;
+}
+
+.sub_event {
+    width: 30%;
+    padding: 30px 40PX;
+    border: 1px black solid;
+    height: fit-content;
+    margin: 10px;
+    background: #e4efff;
+    text-align: left;
+    /* padding-left: 50px; */
+}
+
+.sub_event h1 {
+    font-size: 40px;
+    font-family: serif;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.sub_event h1:hover {
+    color: #27ae60;}
+.sub_event ul {
+    padding-left: 30px;
+
+}
+
+.sub_event ul li {
+    font-size: 25px;
+    list-style: disc;
+    font-family: serif;
+    font-weight: 600;
+}
+.sub_event ul li:hover{
+    color: #27ae60;
+}
+.sub_event a .btn_t {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    font-size: 2rem;
+    color: #fff;
+    background: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding: .8rem 3rem;
+    width: 100%;
+}
+
+.sub_event a .btn_t:hover {
+    background: var(--green);
+    letter-spacing: .1rem;
+    box-shadow: 0rem .5rem .5rem #192a56;
+    transition: .5s;
+    font-size: 2.3rem;
+    margin-top: 2.55rem;
+    width: 100%;
+}
+
+.btn_t
+{
+    color: red;
+    font-size: 25px;
+}
+
+.e_info {
+    width: 70%;
+    margin: 10px;
+}
+
+.e_info .images {
+    width: 100%;
+    display: flex;
+}
+
+.e_info .images .image {
+    width: 50%;
+    height: 280px;
+    margin: 0 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px black;
+    border: 10px solid #eee;
+}
+
+.e_info .images image img {
+    height: 100%;
+    width: 100%;
+
+}

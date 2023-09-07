@@ -1,0 +1,40 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<center>
+    <div class="px-[10rem] pt-[3rem] mb-[5rem]">
+        <div class="sparkline13-list">
+            <div class="sparkline13-hd">
+                <div class="main-sparkline13-hd">
+                    <h1> ORDER DETAILS TABLE</h1>
+                </div>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>    
+                    <th>Food Item Name</th>
+                    <th class="text-right">Food Item Price</th>
+                    <th class="text-right">Quantity</th>
+                    <th class="text-right">Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in order %}
+                {% if order.order_id == a %}
+                <tr class="">
+                    <td>{{order.fi_name}}</td>
+                    <td class="text-right"> {{order.price}} ₹</td>
+                    <td class="text-right">{{order.quantity}}</td>
+                    <td class="text-right">{{order.t_price}} ₹</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</center>
+
+{% endblock body %}

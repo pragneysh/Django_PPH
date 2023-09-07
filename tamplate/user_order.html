@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<style>
+    h1 {
+        font-size: 30px;
+        font-weight: 700;
+    }
+</style>
+
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<BR></BR>
+
+<center>
+    <div id="order">
+        {% if p_order %}
+        <section>
+            <h1 align="left"> Pending Orders :-</h1>
+            <table>
+                <thead>
+                    <thead class="border-gray-800 ">
+                        <th>Contact No</th>
+                        <th>Address</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Items</th>
+                        <th>Amount</th>
+                        <TH>Details</TH>
+                    </thead>
+                <tbody>
+                    {% for i in p_order %}
+                    <tr class="">
+                        <td>{{i.mobile_no}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.order_date}}</td>
+                        <td>{{i.order_time}}</td>
+                        <td>{{i.order_status}}</td>
+                        <td>{{i.items}}</td>
+                        <td>{{i.t_p}} ₹</td>
+                        <td class="cursor-pointer hover:bg-green-200 hover:text-#006400"><a href="{% url 'order_details' i.order_id %}">see details</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {% endif %}
+        {% if c_order %}
+        <section>
+            <h1 align="left"> Confirm Orders :-</h1>
+            <table>
+                <thead>
+                    <thead class="border-gray-800 ">
+                        <th>Contact No</th>
+                        <th>Address</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Items</th>
+                        <th>Amount</th>
+                        <th>Details</th>
+                    </thead>
+                <tbody>
+                    {% for i in c_order %}
+                    <tr class="">
+                        <td>{{i.mobile_no}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.order_date}}</td>
+                        <td>{{i.order_time}}</td>
+                        <td>{{i.order_status}}</td>
+                        <td>{{i.items}}</td>
+                        <td>{{i.t_p}} ₹</td>
+                        <td class="cursor-pointer hover:bg-green-200 hover:text-#006400"><a href="{% url 'order_details' i.order_id %}">see details</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {% endif %}
+        {% if d_order %}
+        <section>
+            <h1 align="left"> Delivere Orders :-</h1>
+            <table <thead>
+                <thead class="border-gray-800 ">
+                    <th>Contact No</th>
+                    <th>Address</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Items</th>
+                    <th>Amount</th>
+                    <TH>Details</TH>
+                </thead>
+                <tbody>
+                    {% for i in d_order %}
+                    <tr class="">
+                        <td>{{i.mobile_no}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.order_date}}</td>
+                        <td>{{i.order_time}}</td>
+                        <td>{{i.order_status}}</td>
+                        <td>{{i.items}}</td>
+                        <td>{{i.t_p}} ₹</td>
+                        <td class="cursor-pointer hover:bg-green-200 hover:text-#006400"><a href="{% url 'order_details' i.order_id %}">see details</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {% endif %}
+    </div>
+    {% if tb %}
+    <section>
+        <h1 align="left"> Table Bookings :-</h1>
+        <table>
+            <thead>
+                <thead class="border-gray-800 ">
+                    <tr>
+                        <th data-field="tb_name">Name</th>
+                        <th data-field="tb_contact" data-editable="true">Contact No</th>
+                        <th data-field="tb_email" data-editable="true">Email</th>
+                        <th data-field="tb_no_guest" data-editable="true">Guest</th>
+                        <th data-field="tb_date" data-editable="true">Date</th>
+                        <th data-field="tb_time" data-editable="true"> Time</th>
+                        <th data-field="table_type" data-editable="true"> Table Type</th>
+                        <th data-field="tb_choose" data-editable="true"> Choose</th>
+                    </tr>
+                </thead>
+            <tbody>
+                {% for tb in tb %}
+                <tr class="">
+                    <td>{{tb.tb_name}}</td>
+                    <td>{{tb.tb_contact}}</td>
+                    <td>{{tb.tb_email}}</td>
+                    <td>{{tb.tb_no_guest}}</td>
+                    <td>{{tb.tb_date}}</td>
+                    <td>{{tb.tb_time}}</td>
+                    <td>{{tb.table_type}}</td>
+                    <td>{{tb.tb_choose}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    {% endif %}
+    {% if event %}
+    <section>
+        <h1 align="left"> Your Events :-</h1>
+        <table>
+            <thead class="border-gray-800 ">
+                <tr>
+                    <th>Name</th>
+                    <th data-field="name" data-editable="true">Event Info</th>
+                    <th data-field="contact" data-editable="true">Date and Time</th>
+                    <th>Event Address</th>
+                    <th>NO of Person</th>
+                    <th>Contact NO</th>
+                    <th>Menu</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in event %}
+                <tr class="">
+                    <td>
+                        {{name}}   
+                    </td>
+                    <td>{{event.event_what}}</td>
+                    <td>{{event.event_date_time}}</td>
+                    <td>{{event.delivery_add}}</td>
+                    <td>{{event.number_of_person}}</td>
+                    <td>{{event.alt_contactno}}</td>
+                    <td class="cursor-pointer hover:bg-green-200 hover:text-#006400"><a href="{% url 'user_menu_details' event.event_id %}">menu</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    {% endif %}
+
+
+</center>
+
+{% endblock body %}

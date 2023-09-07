@@ -1,0 +1,99 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+
+
+<BR>
+<div class="container">
+    <table>
+        <div class="sparkline13-list">
+            <div class="sparkline13-hd">
+                <div class="main-sparkline13-hd">
+                    <h1> Our events </h1>
+                </div>
+            </div>
+            <div class="sparkline13-graph">
+                <div class="datatable-dashv1-list custom-datatable-overright">
+                    <!-- <div class="align-middle">
+                        <select class="form-control">
+                            <option value="">Export Basic</option>
+                            <option value="all">Export All</option>
+                            <option value="selected">Export Selected</option>
+                        </select>
+                    </div>
+                    <div id="toolbar" class="flex justify-between">
+                        <div class=" m-[1rem] mb-[3rem] createitem">
+                            <a href="{% url 'add_event' %}"
+                                class="p-[1rem] border-green-900 text-green-900 hover:bg-green-400 border-[2px] rounded-[10px] bg-white ">
+                                <i class="fa fa-cutlery" aria-hidden="true"> </i> &nbsp; ADD EVENT
+                            </a>
+                        </div>
+                        <div
+                            class=" align-middle p-[1rem] border-green-900 text-green-900 border-[2px] rounded-[10px] m-[1rem] ">
+                            <i class="fa fa-search h-fit" aria-hidden="true"></i><input type="text" class="h-fit"
+                                placeholder="search...">
+                        </div> -->
+                    </div>
+                    <table id="table" data-toggle="table" data-pagination="true" data-search="true"
+                        data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true"
+                        data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                        data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true"
+                        data-toolbar="#toolbar">
+
+                        <thead class="border-gray-800 ">
+                            <tr>
+                                <th data-field="id">Event ID</th>
+                                <th>Name</th>
+                                <th data-field="name" data-editable="true">Event Info</th>
+                                <th data-field="contact" data-editable="true">Date and Time</th>
+                                <th>Event Address</th>
+                                <th>NO of Person</th>
+                                <th>Contact NO</th>
+                                <th>Menu</th>
+                                <th>P. Price</th>
+                                <th>A. Price</th>
+                                <th class="text-center"> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for event in nothing %}
+                            <tr class="">
+                                <td>{{event.event_id}}</td>
+                                <td>
+                                    {% for user in user %}
+                                    {% if event.u_id == user.u_id %}
+                                        {{user.name}}
+                                    {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>{{event.event_what}}</td>
+                                <td>{{event.event_date_time}}</td>
+                                <td>{{event.delivery_add}}</td>
+                                <td>{{event.number_of_person}}</td>
+                                <td>{{event.alt_contactno}}</td>
+                                <td><a href="{% url 'menu_details' event.event_id %}">menu</a></td>
+                                <td>{{event.p_price}}</td>
+                                <td>{{event.a_price}}</td>
+                                <td>
+                                    <div class="flex justify-center">
+                                        <a href="{% url 'edit_event' event.event_id %}"><img
+                                                src="{% static 'image/edit.png' %}" width="30px" height="30px"></a>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="{% url 'delete_event' event.event_id %}" class=""><img
+                                                src="{% static 'image/delete.png' %}" width="30px" height="30px"></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <script>
+                    var loadFile = function (event) {
+                        var image = document.getElementById('output');
+                        image.src = URL.createObjectURL(fi.food_image);
+                        var src1 = image.src;
+                    };
+                </script>
+                {% endblock body %}

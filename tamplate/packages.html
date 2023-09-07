@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/P1.css' %}">
+<br><br><br><br><br>
+
+<Style>
+    .nothig {
+    top: 90px;
+    position: absolute;
+    left: 705px;
+    margin: 0 auto;
+}
+
+.alert {
+    /* position: relative; */
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 30px;
+    padding: 10px 30px;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    border: solid black 1px;
+    width: 50rem;
+}
+
+.icon a i {
+    color: white;
+}
+</Style>
+<center>
+    {% for message in messages %}
+    <center>
+        <div class="nothig">
+            <div class="alert" role="alert">
+                <div class="text">
+                    {{ message }}
+                </div>
+                <div class="icon">
+                    <a href="{% url 'packages' %}">
+                        <i class="fa fa-times" id="close" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </center>
+    {% endfor %}
+    <div style="background-image: url('static/image/pacbg.jpg');" class="py-[15px]">
+
+        <h1 class=" w-[100%] bg-[#00000090] py-[100px] text-white text-[50px]">Our Packages</h1>
+    </div>
+    <hr>
+    <center class="mx-[10%]">
+        <div class="packages mt-[5rem]">
+            <div class="package">
+                <div style="background-image: url('static/image/p1.jpg'); ">
+                    <h1 class="bgimage ">Regular</h1>
+                </div>
+                <div class="info">
+                    <ul>
+                        <li>1 Starter</li>
+                        <li>1 Vegetable</li>
+                        <li>1 Dessert</li>
+                        <li>Regular Other Dishes</li>
+                    </ul>
+                    <div class="price">
+                        <p>Price</p>
+                        <div class="inr">
+                            230 <i class="fa fa-inr" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <a href="{% url 'packagesS' %}">
+                        <button class="btn_b">VIEW DETAILS</button>
+                    </a>
+                </div>
+            </div>
+            <div class="package">
+                <div style="background-image: url('static/image/p1.jpg'); ">
+                    <h1 class="bgimage ">
+                        Silver
+                    </h1>
+                </div>
+                <div class="info">
+                    <ul>
+                        <li>2 Starter</li>
+                        <li>2 Vegetable</li>
+                        <li>1 Dessert</li>
+                        <li>Regular Other Dishes</li>
+                    </ul>
+                    <div class="price">
+                        <p>Price</p>
+                        <div class="inr">
+                            340 <i class="fa fa-inr" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <a href="{% url 'packagesM' %}">
+                        <button class="btn_b">VIEW DETAILS</button>
+                    </a>
+                </div>
+            </div>
+            <div class="package">
+                <div style="background-image: url('static/image/p1.jpg'); ">
+                    <h1 class="bgimage ">Gold</h1>
+                </div>
+                <div class="info">
+                    <ul>
+                        <li>2 Starter</li>
+                        <li>3 Vegetable</li>
+                        <li>1 Dessert</li>
+                        <li>Regular Other Dishes</li>
+                    </ul>
+                    <div class="price">
+                        <p>Price</p>
+                        <div class="inr">
+                            480 <i class="fa fa-inr" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <a href="{% url 'packagesL' %}">
+                        <button class="btn_b">VIEW DETAILS</button>
+                    </a>
+                </div>
+            </div>
+            <div class="package">
+                <div style="background-image: url('static/image/p1.jpg'); ">
+                    <h1 class="bgimage ">Premium</h1>
+                </div>
+                <div class="info">
+                    <ul>
+                        <li>3 Starter</li>
+                        <li>3 Vegetable</li>
+                        <li>2 Dessert</li>
+                        <li>Regular Other Dishes</li>
+                    </ul>
+                    <div class="price">
+                        <p>Price</p>
+                        <div class="inr">
+                            660 <i class="fa fa-inr" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <a href="{% url 'packagesXL' %}">
+                        <button class="btn_b">VIEW DETAILS</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </center>
+
+</center>
+
+{% endblock body %}

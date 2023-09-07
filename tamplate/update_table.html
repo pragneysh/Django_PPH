@@ -1,0 +1,83 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/add1.css' %}">
+
+<center>
+
+    <div class="container mt-[5rem]">
+        <div class="body_form w-[60%] mb-[6rem] ">
+            <h1> Update Table Booking Details</h1>
+            <form action="{% url 'update_tb' data_tb.tb_id %}" class="justify-between" method="POST">
+                {% csrf_token %}
+
+                <div class="fc_name w-full  relative mt-[4rem] text-[1.5rem]">
+                    <input type="text" id="fc_name" required name="tb_name" value="{{data_tb.tb_name}}" class="text-[1.5rem]">
+                    <label for="fc_name" class="text-[1.5rem]">Name</label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="number" id="fc_name" required name="tb_contact" value="{{data_tb.tb_contact}}" class="text-[1.5rem]">
+                    <label for="fc_name">
+                        Contact NO</label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="email" id="fc_name" required name="tb_email" value="{{data_tb.tb_email}}" class="text-[1.5rem]">
+                    <label for="fc_name">
+                        Email</label>
+                </div>
+
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="number" id="fc_name" required name="tb_no_guest" value="{{data_tb.tb_no_guest}}" class="text-[1.5rem]">
+                    <label for="fc_name">
+                        Guest Number</label>
+                </div>
+                <div class="fc_name w-full  relative mt-[2rem]">
+                    <input type="date" id="fc_name" required name="tb_date" value="{{data_tb.tb_date}}" class="text-[1.5rem]">
+                </div>
+                <div class="fc_name w-full  relative mt-[2rem]">
+                    <center>
+                        <select name="tb_time" id="time" class="text-[1.5rem] relative text-black "
+                            value="{{data_tb.tb_time}}">
+                            <option selected disabled>Time</option>
+                            <option value="07:00 PM">07:00 PM</option>
+                            <option value="07:30 PM">07:30 PM</option>
+                            <option value="08:00 PM">08:00 PM</option>
+                            <option value="08:30 PM">08:30 PM</option>
+                            <option value="09:00 PM">09:00 PM</option>
+                            <option value="09:30 PM">09:30 PM</option>
+                            <option value="10:00 PM">10:00 PM</option>
+                            <option value="10:30 PM">10:30 PM</option>
+                            <option value="11:00 PM">11:00 PM</option>
+                            <option value="11:30 PM">11:30 PM</option>
+                        </select>
+                    </center>
+                </div>
+                <div class="fc_name w-full  relative mt-[2rem]">
+                    <center>
+                        <select id="tableType" required name="table_type" name="f_name"
+                            class="text-[1.5rem] relative text-black" value="{{data_tb.tb_table_type}}">
+                            <option selected disabled>Table Type</option>
+                            <option value="small">Small(2 persons)</option>
+                            <option value="medium">Small(4 persons)</option>
+                            <option value="large">large(6 persons)</option>
+                            <option value="extra large">large(10+ persons)</option>
+                        </select>
+                    </center>
+                </div>
+                <div class="fc_name w-full  relative mt-[2rem]">
+                    <select id="placement" name="tb_choose" required name="table_type"
+                        class="text-[1.5rem] relative text-black" value="{{data_tb.tb_choose}}">
+                        <option selected disabled>Choose</option>
+                        <option value="outdoor">Outdoor</option>
+                        <option value="indoor">Indoor</option>
+                    </select>
+                </div> 
+
+                <div class="submit mt-[2rem]">
+                    <button type="submit" class="btn-t" onclick="add_food_category()">UPDATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</center>
+{% endblock body %}

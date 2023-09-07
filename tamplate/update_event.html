@@ -1,0 +1,41 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/add1.css' %}">
+<center>
+    <div class="container mt-[5rem]">
+        <div class="body_form w-[60%] mb-[6rem]" >
+            <h1> EVENT</h1>
+            <form action="{% url 'update_event' data_event.event_id %}" class="justify-between" method="POST">
+                {% csrf_token %}
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="text" id="event_what" required name="event_what" value="{{data_event.event_what}}">
+                    <label for="event_what">
+                        Event Info</label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="date" id="event_date_time" required name="event_date_time" value="{{data_event.event_date_time|date:'Y-m-d'}}">
+                </div>
+                <div class="fc_description w-full  relative mt-[4rem]">
+                    <input cols="30" rows="5" id="delivery_add" required name="delivery_add" value="{{data_event.delivery_add}}"/>
+                    <label for="delivery_add">
+                        Event Address</label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="number" id="number_of_person" required name="number_of_person" value="{{data_event.number_of_person}}">
+                    <label for="number_of_person">
+                        NO of Person</label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="number" id="alt_contactno" required name="alt_contactno" value="{{data_event.alt_contactno}}">
+                    <label for="alt_contactno">
+                        Contact NO </label>
+                </div>
+                <div class="submit mt-[4rem]">
+                    <button type="submit" class="btn-t">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</center>
+{% endblock body %}

@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+<br><br><br><br><br>
+{% if messages %}
+<section class="messages" id="error">
+    {% for message in messages %}
+    <div class="bg-red-300 text-[30px] px-[40px] py-[10px] flex justify-between rounded-[10px] border-black border-[1px] border-solid "
+        role="alert">
+        <div class="text">
+            {{ message }}
+        </div>
+        <div class="icon">
+            <a href="">
+                <i class="fa fa-times" id="close" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+<section id="storeInfo">
+    <div class="table-container">
+        <div class="storeInfo_wrapper">
+            <div class="storeInfo__item">
+                <div class="storeInfo__icon px-10">
+                    <img src="static/image/wall-clock-icon.svg" alt="">
+                </div>
+                <h3 class="storeInfo__title">
+                    10 AM - 11 PM
+                </h3>
+                <p class="storeInfo__text">
+                    Opaning Hours
+                </p>
+            </div>
+            <a
+            href="https://www.google.com/maps/place/PATEL+PAROTHA+HOUSE/@22.9962358,72.6663173,20.25z/data=!4m5!3m4!1s0x395e87cc4324de6b:0xdba35b92cd84bcbc!8m2!3d22.9962932!4d72.6661607">
+            <div class="storeInfo__item">
+                <div class="storeInfo__icon px-10">
+                        <img src="static/image/address-icon.svg" alt="">
+                    </div>
+                    <h3 class="storeInfo__title">
+                        Vastral Ringroad
+                    </h3>
+                    <p class="storeInfo__text">
+                        Address
+                    </p>
+                </div>
+            </a>
+            <div class="storeInfo__item">
+                <div class="storeInfo__icon  px-10">
+                    <img src="static/image/phone-icon.svg" alt="">
+                </div>
+                <h3 class="storeInfo__title">
+                    +91 9714775746
+                </h3>
+                <p class="storeInfo__text">
+                    Call Now
+                </p>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+    <h1 class="heading">BOOK YOUR TABLE</h1>
+    <form action="{% url 'table_booking' %}" method="POST">
+        {% csrf_token %}
+        <div class="inputbox">
+            <div class=" f-name">
+                <input type="text" id="f-name" required class="p-[5px] px-[10px] text-[2.5rem]" name="tb_name" value="{{user.name}}">
+                <label for="f-name"><i class="fa-solid fa-user"></i>
+                    Your Name</label>
+            </div>
+            <div class="contact">
+                <input type="number" id="contact" required class="p-[5px] px-[10px] text-[2.5rem]" maxlength="10" value="{{user.contact}}"
+                    minlength="10" name="tb_contact">
+                <label for="contact">
+                    <i class="fa-solid fa-phone"></i> Contact No</label>
+            </div>
+        </div>
+        <div class="inputbox">
+            <div class=" email">
+                <input type="email" id="mail" required class="p-[5px] px-[10px] text-[2.5rem]" name="tb_email" value="{{user.email}}">
+                <label for="mail"><i class="fa-solid fa-envelope"></i>
+                    Your Email</label>
+            </div>
+            <div class=" person">
+                <input type="number" id="person" required class="p-[5px] px-[10px] text-[2.5rem]" name="tb_no_guest">
+                <label for="person"><i class="fa fa-list-ol"></i> Guest Number </label>
+            </div>
+        </div>
+        <div class="inputbox">
+            <div class="date">
+                <input type="date" id="date" required class="p-[5px] px-[10px] text-[2rem]" name="tb_date">
+            </div>
+            <div class="time">
+                <select name="tb_time" id="time">
+                    <option selected disabled>Time</option>
+                    <option value="07:00 PM">07:00 PM</option>
+                    <option value="07:30 PM">07:30 PM</option>
+                    <option value="08:00 PM">08:00 PM</option>
+                    <option value="08:30 PM">08:30 PM</option>
+                    <option value="09:00 PM">09:00 PM</option>
+                    <option value="09:30 PM">09:30 PM</option>
+                    <option value="10:00 PM">10:00 PM</option>
+                    <option value="10:30 PM">10:30 PM</option>
+                    <option value="11:00 PM">11:00 PM</option>
+                    <option value="11:30 PM">11:30 PM</option>
+                </select>
+            </div>
+        </div>
+        <div class="inputbox">
+            <div class="tableType">
+                <select id="tableType" required name="table_type">
+                    <option selected disabled>Table Type</option>
+                    <option value="2">Small(2 persons)</option>
+                    <option value="4">Small(4 persons)</option>
+                    <option value="6">large(6 persons)</option>
+                    <option value="10">large(10 persons)</option>
+                    <option value="15">large(15 persons)</option>
+                    <option value="20">large(20 persons)</option>
+                </select>
+            </div>
+            <div class="placement">
+                <select id="placement" name="tb_choose">
+                    <option selected disabled>Choose</option>
+                    <option value="outdoor">Outdoor</option>
+                    <option value="indoor">Indoor</option>
+                </select>
+            </div>
+        </div>
+        <div class="inputbox">
+            <div class="submit">
+                <button type="submit" class="btn-t">SUBMIT</button>
+            </div>
+            <div class="reset">
+                <button type="reset" class="btn-t">RESET</button>
+            </div>
+        </div>
+    </form>
+</section>
+<br><br>
+
+<script>
+
+const error = document.getElementById('error');
+const close = document.getElementById('close');
+close.addEventListener('click', () => {
+    error.remove();
+});
+
+</script>
+
+{% endblock body %}

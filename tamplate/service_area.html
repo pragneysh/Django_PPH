@@ -1,0 +1,62 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<center>
+    <div class="px-[10rem] pt-[3rem] mb-[5rem]">
+
+        <div class="sparkline13-list">
+            <div class="sparkline13-hd">
+                <div class="main-sparkline13-hd">
+                    <h1>Service Area Table</h1>
+                </div>
+            </div>
+            <div class="sparkline13-graph">
+                <div class="datatable-dashv1-list custom-datatable-overright">
+                    <div id="toolbar" class="flex justify-between">
+                        <div class=" m-[2rem] ">
+                            <a href="{% url 'add_sa' %}"
+                                class="p-[1rem] border-green-900 text-green-900 hover:bg-green-400 border-[2px] rounded-[10px] bg-white ">
+                                <i class="fa fa-map-marker" aria-hidden="true"> </i> &nbsp;ADD NEW SERVICE AREA
+                            </a>
+                        </div>
+                        <div
+                            class=" align-middle p-[1rem] border-green-900 text-green-900 border-[2px] rounded-[10px] m-[1rem] ">
+                            <i class="fa fa-search h-fit" aria-hidden="true"></i><input type="text" class="h-fit"
+                                placeholder="search...">
+                        </div>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <thead class="border-gray-800 ">
+                            <tr>
+                                <th>Service Area ID</th>
+                                <th>Service Area Name</th>
+                                <th>Service Area Pin Code</th=>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        {% for sa in sa %}
+                        <tr class="">
+                            <td>{{ sa.sa_id }}</td>
+                            <td>{{ sa.sa_name }}</td>
+                            <td>{{ sa.pin_code }}</td>
+                            <td>
+                                <div class="flex justify-center">
+                                <a href="{% url 'edit_sa' sa.sa_id %}"><img src="{% static 'image/edit.png' %}"
+                                    width="30px" height="30px"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="{% url 'delete_sa' sa.sa_id %}" class=""><img src="{% static 'image/delete.png' %}" width="30px" height="30px"
+                                        onclick="return confirm('are you confirm to remove this area ?');"
+                                        ></a>
+                                    </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+</center>
+{% endblock body %}

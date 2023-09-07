@@ -1,0 +1,40 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/add1.css' %}">
+<center>
+    
+    <div class="container mt-[5rem]">
+        <div class="body_form w-[60%] mb-[6rem]" >
+            <h1> ADMIN </h1>
+            <form action="{% url 'update_admin' data_admin.admin_id %}" class="justify-between" method="POST">
+                {% csrf_token %}
+
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="text" id="admin_name" required name="admin_name" value="{{data_admin.admin_name}}">
+                    <label for="admin_name">
+                        Admin Name</label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="text" id="contact_number" required name="contact_number" value="{{data_admin.contact_number}}">
+                    <label for="contact_number">
+                        Contact No</label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="text" id="email_id" required name="email_id" value="{{data_admin.email_id}}">
+                    <label for="email_id">
+                        Email </label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="password" id="admin_password" required name="admin_password" value="{{data_admin.admin_password}}">
+                    <label for="admin_password">
+                        Password</label>
+                </div>
+                <div class="submit mt-[4rem]">
+                    <button type="submit" class="btn-t">UPDATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</center>
+{% endblock body %}

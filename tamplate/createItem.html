@@ -1,0 +1,61 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/createItem.css' %}">
+
+<br><br><br>
+
+<div class="container">
+
+    <center>
+        <div class="body_form w-[60%]">
+            <h1> Food Items Details</h1>
+            <form action="{% url 'createitem' %}" class="justify-between" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="food_name w-full mt-[4rem] relative">
+                    <input type="text" id="food_name" required name="food_name">
+                    <label for="food_name"><i class="fa fa-burger"></i>
+                        Food Item Name</label>
+                </div>
+                <div class="categories mt-[4rem]">
+                    <select name="categories" id="categories" required class="relative" >
+                        <option selected disabled> Item Categories</option>
+                        {% for fc in fc %}
+                        <option value="{{fc.fc_name}}"> {{fc.fc_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class=" price relative mt-[4rem]">
+                    <input type="number" id="price" required name="food_price">
+                    <label for="price"><i class="fa-solid fa-inr"></i>
+                        Price</label>
+                </div>
+                <div class=" person relative mt-[4rem]">
+                    <input type="text" id="food_description" required name="food_description">
+                    <label for="food_description"><i class="fa fa-file-text"></i> Food Ddescription </label>
+                </div>
+                <div class="image relative mt-[4rem] ">
+                    <input type="file" accept="image/*" name="food_image" id="food_image" onchange="loadFile(event)" placeholder="Upload Image">
+                    <label for="food_image"><i class="fa fa-folder"></i> Upload Image </label>
+                    <img id="output" class="mt-[4rem] p-[2rem]" />
+                </div>
+                <div class="submit mt-[4rem] ">
+                    <button type="submit" class="btn-t py-[1.5rem]">NEW ITEM</button>
+                </div>
+            </form>
+        </div>
+    </center>
+
+</div>
+
+
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+        var src1 = image.src;
+        image.style.height = "400px";
+    };
+</script>
+{% endblock body %}

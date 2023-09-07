@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<link rel="stylesheet" href="{% static 'css/add1.css' %}">
+<BR><BR></BR></BR>
+<center>
+    <div class="container mt-[5rem]">
+        <div class="body_form w-[60%] mb-[6rem]">
+            <h1> Update Your Info</h1>
+            <form action="{% url 'update_image' data.u_id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="image relative mt-[4rem] ">
+                    <input type="file" accept="image/*" name="user_image" id="user_image" onchange="loadFile(event)" 
+                            placeholder="Upload Image">
+                    <label for="file"><i class="fa fa-folder"></i> Upload Image </label>
+                {% if data.user_image != '' %}
+                    <img id="output" src="{{data.user_image.url}}" class="mt-[4rem] p-[2rem] h-[400px] w-[400px]" />
+                {% endif %}
+                </div>
+                <div class="submit mt-[4rem]">
+                    <button type="submit" class="btn-t">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</center>
+
+
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+        var src1 = image.src;
+    };
+</script>
+{% endblock %}

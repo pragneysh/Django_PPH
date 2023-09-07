@@ -1,0 +1,510 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/pack.css' %}">
+<style>
+    span{
+        font-size: 25px;
+    color: #192a56;
+    font-family: initial;
+    padding-left: 5px;
+    margin-bottom: 5px;
+    }
+    .package {
+        width: 100%;
+        text-align: center;
+        height: fit-content;
+        border: 2px solid #192a56;
+        padding: 5px 10px;
+        background: var(--black);
+        color: aliceblue;
+        font-size: 25px;
+        border-radius: 10px;
+    }
+
+    .package:hover {
+        background: var(--green);
+    }
+</style>
+<img src="{% static 'image/sp.png' %}" alt="" class="w-full">
+<div class="container_pac">
+    <div class="flex w-full gap-[20px]">
+        <a href="{% url 'packagesS' %}" class=" w-full">
+            <div class='package'>
+                Regular Package
+            </div>
+        </a>
+        <a href="{% url 'packagesL' %}" class=" w-full">
+            <div class='package'>
+                Gold Package
+            </div>
+        </a>
+        <a href="{% url 'packagesXL' %}" class=" w-full">
+        <div class='package'>
+                Premium Package
+            </div>
+        </a>
+    </div>
+</div>
+<div class="container_pac">
+    <form action="{% url 'event_menu' %}" method="post">
+        {% csrf_token %}
+        <div class="box_input">
+            <div class="flex justify-between bb">
+                <h1 class="h1">Starter</h1>
+                <div class=" flex ">
+                    <div class="hidden" id="Starter_Option">
+                        <select class="h-[50px] w-fit" id="add_strter">
+                            <option value="starter Drink ">starter Drink </option>
+                            <option value="starter Food">starter Food</option>
+                            <option value="Soup">Soup</option>
+                        </select>
+                        <h1 class="package h-[48px] ml-[30px]" id="yes">add</h1>
+                    </div>
+                    <h1 class="package" id="add_stater">Add Starter</h1>
+                </div>
+            </div>
+            <div class="starter ">
+                <div class="option add_h">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> starter Food </p>
+                    <select name="item1" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'starter Food' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name }}</option>
+                            <i>15</i>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> starter Food </p>
+                    <select name="item1" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'starter Food' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name }}</option>
+                            <i>15</i>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> starter Drink</p>
+                    <select name="item1" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'starter Drink ' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name }}</option>
+                            <i>15</i>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Soup</p>
+                    <select name="item2" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'Soup' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name}}</option>
+                            <i>20</i>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="flex justify-between bb">
+                <h1 class="h1">Main Course</h1>
+                <div class=" flex ">
+                    <div class="hidden" id="Main_Option">
+                        <select class="h-[50px] w-fit" id="add_mc1">
+                            <option value="Paneer">Paneer </option>
+                            <option value="Normal Vagetable">Normal Vagetable </option>
+                            <option value="Roti">Roti </option>
+                            <option value="Dal Or Kadhi">Dal Or Kadhi </option>
+                            <option value="Rice Or Pulav">Rice Or Pulav </option>
+                            <option value="Salad">Salad </option>
+                            <option value="Papad">Papad </option>
+                            <option value="Sweet">Sweet </option>
+                            <option value="Dessert">Dessert </option>
+                        </select>
+                        <h1 class="package h-[48px] ml-[30px]" id="yes2">add</h1>
+                    </div>
+                    <h1 class="package" id="add_mc2">Add Main Course</h1>
+                </div>
+            </div>
+            <div class="Main_course">
+                <div class="option add_m">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Paneer</p>
+                    <select name="item4" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'paneer' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name }}</option>
+                            <i>50</i>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Normal Vagetable</p>
+                    <select name="item5" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'Mix vegetables' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name }}</option>
+                            <i>30</i>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Normal Vagetable</p>
+                    <select name="item5" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'Mix vegetables' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name }}</option>
+                            <i>30</i>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Roti</p>
+                    <select name="item6" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'roti' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name }}</option>
+                            <i>10</i>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Dal Or Kadhi</p>
+                    <select name="item7" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'dal' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name}}</option>
+                            <i>30</i>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Rice Or Pulav</p>
+                    <select name="item8" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'rice' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name }}</option>
+                            <i>25</i>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Salad</p>
+                    <select name="item9" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'Salad' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name }}</option>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Papad</p>
+                    <select name="item10" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'Papad' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name }}</option>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Sweet</p>
+                    <select name="item11" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'Sweet ' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">{{ i.emi_name }}</option>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="option">
+                    <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Dessert</p>
+                    <select name="item12" id="">
+                        {% for i in fi %}
+                        {% if i.emi_category == 'Dessert' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                            {{i.emi_name }}</option>
+                            {% endif %}
+                            {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <span class="h1">Total Price :</span>
+            <span class="h1" id="t_price">340</span>
+        </div>
+        <input type="submit" class="btn_t" style="font-size:20px;">
+    </form>
+</div>
+
+
+<script>
+
+    var button = document.getElementById("add_stater");
+    var dropdown = document.getElementById("Starter_Option");
+    var yes = document.getElementById("yes");
+
+    button.onclick = function () {
+        var dropdown = document.getElementById("Starter_Option");
+        dropdown.style.display = "flex";
+        button.style.display = "none";
+    };
+    yes.onclick = function () {
+        dropdown.style.display = "none";
+        button.style.display = "flex";
+        var Option = document.getElementById("add_strter");
+        var selectedOption = Option.options[Option.selectedIndex].value;
+        console.log(selectedOption);
+        let a = document.getElementsByClassName('option').length;
+        let i = a + 1;
+        console.log(i);
+        switch (selectedOption) {
+            case "starter Drink ":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> `+ selectedOption + `</p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'starter Drink ' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>15</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_h');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 + 20;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            case "starter Food":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> `+ selectedOption + `</p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'starter Food' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>15</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_h');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 +20;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            case "Soup":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> `+ selectedOption + `</p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'Soup' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>20</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_h');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 + 25;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            default:
+                alert("Sorry, that fruit is not available.");
+        }
+    };
+
+    var button1 = document.getElementById("add_mc2");
+    var dropdown1 = document.getElementById("Main_Option");
+    var yes1 = document.getElementById("yes2");
+
+    button1.onclick = function () {
+        var dropdown1 = document.getElementById("Main_Option");
+        dropdown1.style.display = "flex";
+        button1.style.display = "none";
+    };
+
+    yes1.onclick = function () {
+        dropdown1.style.display = "none";
+        button1.style.display = "flex";
+        var Option = document.getElementById("add_mc1");
+        var selectedOption = Option.options[Option.selectedIndex].value;
+        console.log(selectedOption);
+        let a = document.getElementsByClassName('option').length;
+        let i = a + 1;
+        console.log(i);
+        switch (selectedOption) {
+            case "Paneer":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Paneer </p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'paneer' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>50</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_m');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 + 50;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            case "Normal Vagetable":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Normal Vagetable </p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'Mix vegetables' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>30</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_m');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 + 40;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            case "Roti":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Roti </p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'roti' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>10</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_m');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 + 10;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            case "Dessert":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Dessert</p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'Dessert' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>10</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_m');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 + 20;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            case "Sweet":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Sweet</p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'Sweet ' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>10</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_m');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 + 15;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            case "Papad":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Papad</p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'Papad' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>10</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_m');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 + 10;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            case "Salad":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Salad</p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'Salad' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>10</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_m');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 + 10;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            case "Rice Or Pulav":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i> Rice Or Pulav</p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'rice' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>25</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_m');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 + 30;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            case "Dal Or Kadhi":
+                $(`<div class="option">
+                        <p><i class="fa fa-circle align-middle" aria-hidden="true"></i>Dal Or Kadhi</p>
+                        <select name="item`+ i + `" id="">
+                            {% for i in fi %}
+                            {% if i.emi_category == 'dal' and i.emi_lavel <= 2 %} <option value="{{i.emi_id}}">
+                                {{i.emi_name }}</option>
+                                <i>30</i>
+                                {% endif %}
+                                {% endfor %}
+                        </select>
+                    </div>`).insertAfter('.add_m');
+                var t_price = document.getElementById("t_price").innerHTML;
+                var t_p1 =  parseInt(t_price);
+                var p_t = t_p1 + 30;
+                document.getElementById("t_price").innerHTML = p_t;
+                break;
+            default:
+                alert("Sorry, that fruit is not available.");
+        };
+    };
+
+
+</script>
+
+
+{% endblock body %}

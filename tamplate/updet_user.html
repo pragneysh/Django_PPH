@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/add1.css' %}">
+<BR><BR></BR></BR>
+<center>
+    <div class="container mt-[5rem]">
+        <div class="body_form w-[60%] mb-[6rem]">
+            <h1> Update Your Info</h1>
+            <form action="{% url 'update_user' data.u_id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="text" id="fc_name" required name="name" value="{{data.name}}">
+                    <label for="fc_name">
+                        Name</label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="email" id="fc_name" required name="email" value="{{data.email}}">
+                    <label for="fc_name">
+                        Email</label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="number" id="fc_name" required name="contact" value="{{data.contact}}" maxlength="10"
+                        minlength="10">
+                    <label for="fc_name">
+                        Contact NO</label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="password" id="fc_name" required name="password" value="{{data.password}}">
+                    <label for="fc_name">
+                        Your Password </label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="text" id="fc_name" required name="u_address" value="{{data.u_address}}">
+                    <label for="fc_name">
+                        Enter Your Address </label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="text" id="fc_name" required name="u_city" value="{{data.u_city}}">
+                    <label for="fc_name">
+                        Your City </label>
+                </div>
+                <div class="fc_name w-full  relative mt-[4rem]">
+                    <input type="number" id="fc_name" required name="u_pin_code" value="{{data.u_pin_code}}"
+                        minlength="6" maxlength="6">
+                    <label for="fc_name">
+                        Enter Your Pin Code </label>
+                </div>
+                {% if data.user_image != '' %}
+                <div class="image relative mt-[4rem] ">
+                    <img id="output" src="{{data.user_image.url}}" class="mt-[4rem] p-[2rem] w-[400px] h-[400px]" />
+                </div>
+                {% endif %}
+                <div class="mt-[4rem]">
+                    <a href="{% url 'edit_image' data.u_id %}" class="btn-t mt-[4rem]">UPDATE YOUR IMAGE </a>
+                </div>
+                <div class="submit mt-[4rem]">
+                    <button type="submit" class="btn-t" >SUBMIT</button>
+                </div>
+            </form>
+</center>
+
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+        var src1 = image.src;
+    };
+</script>
+
+{% endblock body %}

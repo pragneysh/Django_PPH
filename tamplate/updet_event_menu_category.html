@@ -1,0 +1,31 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+
+
+<link rel="stylesheet" href="{% static 'css/add1.css' %}">
+<center>
+    
+    <div class="container mt-[5rem]">
+        <div class="body_form w-[60%] mb-[6rem]" >
+            <h1> Food Items Category</h1>
+            <form action="{% url 'update_emc' data_emc.emc_id %}" class="justify-between" method="POST">
+                {% csrf_token %}
+                <div class="emc_name w-full  relative mt-[4rem]">
+                    <input type="text" id="emc_name" required name="emc_name" value="{{data_emc.emc_name}}">
+                    <label for="emc_name"><i class="fa fa-cutlery" aria-hidden="true"></i>
+                        Update Food Category Name</label>
+                </div>
+                <div class="emc_description w-full  relative mt-[4rem]">
+                <input type="text" name="emc_description" value="{{data_emc.emc_description}}">
+                    <label for="emc_description"><i class="fa fa-file-text" aria-hidden="true"></i>
+                        Food Category Description</label>
+                </div>
+                <div class="submit mt-[4rem]">
+                    <button type="submit" class="btn-t">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</center>
+{% endblock body %}

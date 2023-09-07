@@ -1,0 +1,124 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<BR>
+    <Style>
+        /* .nothig {
+            top: 100px;
+            position: absolute;
+            left: 705px;
+            margin: 0 auto;
+            z-index: 5;
+        } */
+    
+        .alert {
+            /* position: relative; */
+            background-color: rgba(11, 15, 13, 0.5);
+            font-size: 30px;
+            padding: 10px 30px;
+            display: flex;
+            border-radius: 10px;
+            justify-content: space-between;
+            border: solid black 1px;
+            width: fit-content;
+        }
+    
+        .icon {
+            padding-left: 50px;
+        }
+    
+        .icon a i {
+            color: white;
+    
+        }
+        .map{
+            box-shadow: 0px 0px 50px gray;
+    
+        }
+    </Style>
+<div class="container">
+    {% for message in messages %}
+    <center>
+        <div class="nothig">
+            <div class="alert" role="alert">
+                <div class="text">
+                    {{ message }}
+                </div>
+                <div class="icon">
+                    <a href="{% url 'admin_table' %}">
+                        <i class="fa fa-times" id="close" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </center>
+    {% endfor %}
+    <div class="sparkline13-list">
+        <div class="sparkline13-hd">
+            <div class="main-sparkline13-hd">
+                <h1>Admin detail table</h1>
+            </div>
+        </div>
+        <div class="sparkline13-graph">
+            <div class="datatable-dashv1-list custom-datatable-overright">
+                <div class="align-middle">
+                    <select class="form-control">
+                        <option value="">Export Basic</option>
+                        <option value="all">Export All</option>
+                        <option value="selected">Export Selected</option>
+                    </select>
+                </div>
+                <div id="toolbar" class="flex justify-between">
+                    <div class=" m-[1rem] mb-[3rem] createitem">
+                        <a href="{% url 'add_admin' %}"
+                            class="p-[1rem] border-green-900 text-green-900 hover:bg-green-400 border-[2px] rounded-[10px] bg-white ">
+                            &nbsp; ADD NEW ADMIN
+                        </a>
+                    </div>
+                    <div
+                        class=" align-middle p-[1rem] border-green-900 text-green-900 border-[2px] rounded-[10px] m-[1rem] ">
+                        <i class="fa fa-search h-fit" aria-hidden="true"></i><input type="text" class="h-fit"
+                            placeholder="search...">
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <thead class="border-gray-800 ">
+                            <tr>
+                                <th data-field="state" data-checkbox="true">Admin ID</th>
+                                <th data-field="id">Admin Name</th>
+                                <th data-field="contact" data-editable="true">Email</th>
+                                <th>Contact no</th>
+                                <th data-field="name" data-editable="true">Password</th>
+                                <th class="text-center"> Action</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        {% for admin in admin %}
+                        <tr class="">
+                            <td>{{admin.admin_id}}</td>
+                            <td>{{admin.admin_name}}</td>
+                            <td>{{admin.email_id}}</td>
+                            <td>{{admin.contact_number}}</td>
+                            <td><input type="password" value="{{admin.admin_password}}" class="w-[100px]" readonly></td>
+                            <td>
+                                <div class="flex justify-center">
+                                    <a href="{% url 'edit_admin' admin.admin_id %}">
+                                        <img src="{% static 'image/edit.png' %}" width="30px" height="30px"></a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="{% url 'delete_admin' admin.admin_id %}" class="">
+                                        <img src="{% static 'image/delete.png' %}" width="30px"
+                                            onclick="return confirm('are you confirm to delete admin ?');"
+                                            height="30px"></a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

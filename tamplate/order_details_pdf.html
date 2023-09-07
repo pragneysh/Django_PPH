@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/display.css' %}">
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .header .s_name {
+            font-size: 35px;
+            font-weight: 900;
+        }
+
+        .header .bd {
+            justify-content: center;
+            display: flex;
+            flex-direction: column;            
+            }
+
+        .bd div {
+            font-size: 20px;
+        }
+
+        .t_p {
+            padding: 10px;
+            font-size: 25px;
+            width: 100%;
+            text-align: right;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        thead tr {
+            padding-top: 5px;
+            border: gray solid 1px;
+            text-align: left;
+            background: #37e07d;
+            color: darkgreen;
+            font-size: xx-large;
+        }
+
+        thead tr th,
+        tbody tr td {
+            font-size: xx-large;
+            border: green solid 2px;
+            padding-left: 2px;
+            text-align: left;
+            padding-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <BR>
+    <div class="container">
+        <div class="header flex">
+            <div class="s_name">Patel Parotha House</div>
+            <div class="bd">
+                <div class="b_no">
+                    <b>Bill No :</b> <span>{{a.order_id}}</span>
+                </div>
+                <div class="b_data">
+                    <b>Date :</b> <span>{{a.order_date}}</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="bd">
+            <div class="">
+                <b>Name :</b> {{user.name}}
+            </div>
+            <div class="">
+                <b>Mobile :</b> {{a.mobile_no}}
+            </div>
+            <div class="">
+                <b>Address :</b> {{a.address}}
+            </div>
+        </div>
+        <table>
+            <thead class="border-gray-800 ">
+                <tr>
+                    <th>Food Item Name</th>
+                    <th>Food Item Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in order %}
+                {% if order.order_id == a.order_id %}
+                <tr>
+                    <td>{{order.fi_name}}</td>
+                    <td> {{order.price}} </td>
+                    <td>{{order.quantity}}</td>
+                    <td>{{order.t_price}}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="t_p"><b>Total Price :</b> {{a.t_p}}</div>
+
+</body>
+
+</html>

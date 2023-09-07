@@ -1,0 +1,79 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<BR>
+<div class="container">
+    <div class="sparkline13-list">
+        <div class="sparkline13-hd">
+            <div class="main-sparkline13-hd">
+                <h1> Hall Booking Details </h1>
+            </div>
+        </div>
+        <div class="sparkline13-graph">
+            <div class="datatable-dashv1-list custom-datatable-overright">
+                <!-- <div class="align-middle">
+                    <select class="form-control">
+                        <option value="">Export Basic</option>
+                        <option value="all">Export All</option>
+                        <option value="selected">Export Selected</option>
+                    </select>
+                </div>
+                <div id="toolbar" class="flex justify-between">
+                    <div class=" m-[1rem] mb-[3rem] createitem">
+                        <a href="{% url 'add_event_hotel' %}"
+                            class="p-[1rem] border-green-900 text-green-900 hover:bg-green-400 border-[2px] rounded-[10px] bg-white ">
+                            <i class="fa fa-cutlery" aria-hidden="true"> </i> &nbsp; ADD EVENT IN HOTEL
+                        </a>
+                    </div>
+                    <div
+                        class=" align-middle p-[1rem] border-green-900 text-green-900 border-[2px] rounded-[10px] m-[1rem] ">
+                        <i class="fa fa-search h-fit" aria-hidden="true"></i><input type="text" class="h-fit"
+                            placeholder="search...">
+                    </div>
+                </div> -->
+                <table>
+                    <thead class="border-gray-800 ">
+                        <tr>
+                            <th data-field="id">HB ID</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Strting Time</th>
+                            <th>Ending Time</th>
+                            <th>Event ID</th>
+                            <th class="text-center"> Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for hb in hb %}
+                        <tr class="">
+                            <td>{{hb.hb_id}}</td>
+                            <td>
+                                {% for user in user %}
+                                {% if hb.u_id == user.u_id %}
+                                {{user.name}}
+                                {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>{{hb.date}}</td>
+                            <td>{{hb.start_time}}</td>
+                            <td>{{hb.end_time}}</td>
+                            <td>{{hb.event_id}}</td>
+                            <td>
+                                <div class="flex justify-center">
+                                    <a href="{% url 'edit_event' hb.event_id %}"><img
+                                            src="{% static 'image/edit.png' %}" width="30px" height="30px"></a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="{% url 'delete_event' hb.event_id %}" class=""><img
+                                            src="{% static 'image/delete.png' %}" width="30px" height="30px"></a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

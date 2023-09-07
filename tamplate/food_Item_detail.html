@@ -1,0 +1,110 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<BR>
+<div class="container">
+    <div class="sparkline13-list">
+        <div class="sparkline13-hd">
+            <div class="main-sparkline13-hd">
+                <h1>Food Items detail table</h1>
+            </div>
+        </div>
+        <div class="sparkline13-graph">
+            <div class="datatable-dashv1-list custom-datatable-overright">
+                <div class="align-middle">
+                    <select class="form-control">
+                        <option value="">Export Basic</option>
+                        <option value="all">Export All</option>
+                        <option value="selected">Export Selected</option>
+                    </select>
+                </div>
+                <div id="toolbar" class="flex justify-between">
+                    <div class="flex">
+                        <div class=" m-[1rem] mb-[3rem] createitem">
+                            <a href="{% url 'createitem' %}"
+                                class="p-[1rem] border-green-900 text-green-900 hover:bg-green-400 border-[2px] rounded-[10px] bg-white ">
+                                <i class="fa fa-cutlery" aria-hidden="true"> </i> &nbsp; ADD NEW FOOD ITEM
+                            </a>
+                        </div>
+                        <div class=" m-[1rem] mb-[3rem] createitem">
+                            <a href="{% url 'food_Item_detail_pdf' %}"
+                                class="p-[1rem] border-green-900 text-green-900 hover:bg-green-400 border-[2px] rounded-[10px] bg-white ">
+                                Genret Report
+                            </a>
+                        </div>
+                    </div>
+                    <div
+                        class=" align-middle p-[1rem] border-green-900 text-green-900 border-[2px] rounded-[10px] m-[1rem] ">
+                        <i class="fa fa-search h-fit" aria-hidden="true"></i><input type="text" class="h-fit"
+                            id="search_box" placeholder="search..." onkeyup="search()">
+                    </div>
+                </div>
+                <table id="table">
+                    <thead>
+                        <thead class="border-gray-800 ">
+                            <tr>
+                                <th data-field="food_id">ID</th>
+                                <th data-field="food_name" data-editable="true">Food Item</th>
+                                <th data-field="food_image" data-editable="true" class="text-center">Food Image</th>
+                                <th data-field="categories" data-editable="true">Categories</th>
+                                <th data-field="price" class="text-center" data-editable="true">Price <i
+                                        class="fa-solid fa-inr"></i>
+                                </th>
+                                <th data-field="description" data-editable="true"> Description</th>
+                                <th data-field="action" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                    <tbody id="items">
+                        {% for fi in fi %}
+                        <tr class="item" id="item">
+                            <td>{{fi.fi_id}}</td>
+                            <td>{{fi.food_name}}</td>
+                            <td>
+                                <center> <img src="media/{{fi.food_image}}" width="100px" alt="{{fi.food_image}}">
+                                </center>
+                            </td>
+                            <td>{{fi.categories}}</td>
+                            <td class="text-center">{{fi.food_price}} ₹</td>
+                            <td>{{fi.food_description}}</td>
+                            <td>
+                                <div class="flex justify-center">
+                                    <a href="{% url 'edit_fi' fi.fi_id %}"><img src="{% static 'image/edit.png' %}"
+                                            width="30px" height="30px"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="{% url 'delete_fi' fi.fi_id %}"><img src="{% static 'image/delete.png' %}"
+                                            width="30px" height="30px"
+                                            onclick="return confirm('are you confirm to delete food item ?');"></a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function search() {
+        let filter = document.getElementById('search_box').value.toUpperCase();
+        let table = document.getElementById('table');
+        let tr = table.getElementsByTagName('tr');
+        for (var i = 0; i < tr.length; i++) {
+            let td = tr[i].getElementsByTagName('td');
+            for (var j = 0; j < td.length; j++) {
+                if (td[j]) {
+                    let textvalue = td[j].textContent || td[j].innerHTML;
+                    if (textvalue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = '';
+                        break;
+                    }
+                    else {
+                        tr[i].style.display = 'None';
+                    }
+                }
+            }
+        }
+    }
+</script>
+{% endblock body %}

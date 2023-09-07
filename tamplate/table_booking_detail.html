@@ -1,0 +1,79 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<BR>
+<div class="container">
+    <div class="sparkline13-list">
+        <div class="sparkline13-hd">
+            <div class="main-sparkline13-hd">
+                <h1>Detail About Booked Tables</h1>
+            </div>
+        </div>
+        <div class="sparkline13-graph">
+            <div class="datatable-dashv1-list custom-datatable-overright">
+                <div class="align-middle">
+                    <select class="form-control">
+                        <option value="">Export Basic</option>
+                        <option value="all">Export All</option>
+                        <option value="selected">Export Selected</option>
+                    </select>
+                </div>
+                <div id="toolbar" class="flex justify-between">
+                    <div class=" m-[1rem] mb-[3rem] createitem">
+                        <a href="{% url 'table_booking' %}"
+                            class="p-[1rem] border-green-900 text-green-900 hover:bg-green-400 border-[2px] rounded-[10px] bg-white ">
+                            <i class="fa fa-cutlery" aria-hidden="true"> </i> &nbsp; BOOK THE TABLE
+                        </a>
+                    </div>
+                    <div
+                        class=" align-middle p-[1rem] border-green-900 text-green-900 border-[2px] rounded-[10px] m-[1rem] ">
+                        <i class="fa fa-search h-fit" aria-hidden="true"></i><input type="text" class="h-fit"
+                            placeholder="search...">
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <thead class="border-gray-800 ">
+                            <tr>
+                                <th data-field="tb_id">ID</th>
+                                <th data-field="tb_name">Name</th>
+                                <th data-field="tb_contact" data-editable="true">Contact No</th>
+                                <th data-field="tb_email" data-editable="true">Email</th>
+                                <th data-field="tb_no_guest" data-editable="true">Guest</th>
+                                <th data-field="tb_date" data-editable="true">Date</th>
+                                <th data-field="tb_time" data-editable="true"> Time</th>
+                                <th data-field="table_type" data-editable="true"> Table Type</th>
+                                <th data-field="tb_choose" data-editable="true"> Choose</th>
+                                <th data-field="action" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        {% for tb in tb %}
+                        <tr class="">
+                            <td>{{tb.tb_id}}</td>
+                            <td>{{tb.tb_name}}</td>
+                            <td>{{tb.tb_contact}}</td>
+                            <td>{{tb.tb_email}}</td>
+                            <td>{{tb.tb_no_guest}}</td>
+                            <td>{{tb.tb_date}}</td>
+                            <td>{{tb.tb_time}}</td>
+                            <td>{{tb.table_type}}</td>
+                            <td>{{tb.tb_choose}}</td>
+                            <td>
+                                <div class="flex justify-center">
+                                    <a href="{% url 'edit_tb' tb.tb_id %}"><img src="{% static 'image/edit.png' %}"
+                                            width="30px" height="30px"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="{% url 'delete_tb' tb.tb_id %}"><img src="{% static 'image/delete.png' %}"
+                                            width="30px" height="30px"></a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

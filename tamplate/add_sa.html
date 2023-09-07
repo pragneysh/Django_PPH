@@ -1,0 +1,31 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/createItem.css' %}">
+
+<br><br><br>
+
+<div class="container">
+<center>
+    <div class="body_form w-[60%] mb-[6rem]" >
+        <h1> Add New Service Area</h1>
+        <form action="{% url 'add_sa' %}" class="justify-between" method="POST">
+            {% csrf_token %}
+            <div class="sa_name w-full  relative mt-[4rem]">
+                <input type="text" id="sa_name" required name="sa_name">
+                <label for="sa_name">
+                    Service Area Name</label>
+            </div>
+            <div class="sa_description w-full  relative mt-[4rem]">
+                <input type="number" id="pin_code" required name="pin_code">
+                <label for="pin_code">
+                    Service Area Pin Code</label>
+            </div>
+            <div class="submit mt-[4rem]">
+                <button type="submit" class="btn-t" onclick="add_food_category()">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+</center>
+
+{% endblock body %}

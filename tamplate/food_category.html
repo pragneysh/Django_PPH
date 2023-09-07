@@ -1,0 +1,93 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<BR>
+<div class="container">
+    <div class="sparkline13-list">
+        <div class="sparkline13-hd">
+            <div class="main-sparkline13-hd">
+                <h1>Food Category Detail Table</h1>
+            </div>
+        </div>
+        <div class="sparkline13-graph">
+            <div class="datatable-dashv1-list custom-datatable-overright">
+                <div class="align-middle">
+                    <select class="form-control">
+                        <option value="">Export Basic</option>
+                        <option value="all">Export All</option>
+                        <option value="selected">Export Selected</option>
+                    </select>
+                </div>
+                <div id="toolbar" class="flex justify-between">
+                    <div class=" m-[2rem] ">
+                        <a href="{% url 'add_food_category' %} "
+                            class="p-[1rem] border-green-900 text-green-900 hover:bg-green-400 border-[2px] rounded-[10px] bg-white ">
+                            <i class="fa fa-cutlery" aria-hidden="true"> </i> &nbsp; ADD NEW FOOD CATEGORY
+                        </a>
+                    </div>
+                    <div
+                        class=" align-middle p-[1rem] border-green-900 text-green-900 border-[2px] rounded-[10px] m-[1rem] ">
+                        <i class="fa fa-search h-fit" aria-hidden="true"></i><input type="text" class="h-fit " onkeyup="search()" id="search_box"
+                            placeholder="search...">
+                    </div>
+                </div>
+            </div>
+            <table id="table">
+                <thead>
+                    <thead class="border-gray-800 ">
+                        <tr>
+                            <th data-field="id">CategoryID</th>
+                            <th data-field="name" data-editable="true">Category Name</th>
+                            <th data-field="contact" data-editable="true">Category Description</th>
+                            <th class="w-[250px]">Food</th>
+                            <th class="text-center"> Action</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    {% for fc in fc %}
+                    <tr class="">
+                        <td>{{fc.fc_id}}</td>
+                        <td>{{fc.fc_name}}</td>
+                        <td>{{fc.fc_description}}</td>
+                        <td><a href="{% url 'similar_fi'  fc.fc_id %}">See All Foods</a></td>
+                        <td>
+                            <div class="flex justify-center">
+                                <a href="{% url 'edit_fc' fc.fc_id %}"><img src="{% static 'image/edit.png' %}"
+                                        width="30px" height="30px"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="{% url 'delete_fc' fc.fc_id %}" class=""><img
+                                        src="{% static 'image/delete.png' %}" width="30px" height="30px"
+                                        onclick="return confirm('are you confirm to delete category ?');"></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function search() {
+        let filter = document.getElementById('search_box').value.toUpperCase();
+        let table = document.getElementById('table');
+        let tr = table.getElementsByTagName('tr');
+        for (var i = 0; i < tr.length; i++) {
+            let td = tr[i].getElementsByTagName('td');
+            for (var j = 0; j < td.length; j++) {
+                if (td[j]) {
+                    let textvalue = td[j].textContent || td[j].innerHTML;
+                    if (textvalue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = '';
+                        break;
+                    }
+                    else {
+                        tr[i].style.display = 'None';
+                    }
+                }
+            }
+        }
+    }   
+</script>
+{% endblock body %}

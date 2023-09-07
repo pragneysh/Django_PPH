@@ -1,0 +1,49 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/createItem.css' %}">
+
+<br><br><br>
+
+<div class="container">
+
+    <center>
+        <div class="body_form w-[60%]">
+            <h1> Add Food Items For Event</h1>
+            <form action="{% url 'add_event_menu_item' %}" class="justify-between" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="emi_name w-full mt-[4rem] relative">
+                    <input type="text" id="emi_name" required name="emi_name">
+                    <label for="emi_name"><i class="fa fa-burger"></i>
+                        Food Item Name</label>
+                </div>
+                <div class="categories mt-[4rem]">
+                    <select name="categories" id="categories" required class="relative" >
+                        <option selected disabled> Item Categories</option>
+                        {% for emc in emc %}
+                        <option value="{{emc.emc_name}}"> {{emc.emc_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class=" price relative mt-[4rem]">
+                    <input type="number" id="price" required name="emi_price">
+                    <label for="price"><i class="fa-solid fa-inr"></i>
+                        Price</label>
+                </div>
+                <div class="emi_lavel w-full mt-[4rem] relative">
+                    <select name="emi_lavel" id="emi_lavel" required class="relative" >
+                        <option value="1" > Regular Package</option>
+                        <option value="2"> Silver Package</option>
+                        <option value="3"> Gold Package</option>
+                        <option value="4"> Premium Package</option>
+                    </select>
+                </div>
+                <div class="submit mt-[4rem] ">
+                    <button type="submit" class="btn-t py-[1.5rem]">NEW ITEM</button>
+                </div>
+            </form>
+        </div>
+    </center>
+
+</div>
+{% endblock body %}

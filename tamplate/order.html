@@ -1,0 +1,90 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/display.css' %}">
+<center>
+    <div class="px-[5px] pt-[3rem] mb-[5rem]">
+
+        <div class="sparkline13-list">
+            <div class="sparkline13-hd">
+                <div class="main-sparkline13-hd">
+                    <h1> ORDER TABLE</h1>
+                </div>
+            </div>
+        </div>
+        <table>
+            <thead class="border-gray-800 ">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customre ID</th>
+                    <th>Address</th>
+                    <th>contact</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Items</th>
+                    <th>Amount</th>
+                    <th>Details</th>
+                    <th>Satuts</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in order %}
+                <tr class="">
+                    <td>{{order.order_id}}</td>
+                    <td>
+                        {% for user in user %}
+                        {% if order.u_id == user.u_id %}
+                            {{user.name}}
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td class="w-[440px]">{{order.address}}</td>
+                    <td>{{order.mobile_no}}</td>
+                    <td>{{order.order_date}}</td>
+                    <td>{{order.order_time}}</td>
+                    <td>{{order.items}}</td>
+                    <td>{{order.t_p}} ₹</td>
+                    <td class="cursor-pointer hover:bg-green-200 hover:text-#006400">
+                        <a href="{% url 'order_d' order.order_id %}">
+                            see details
+                        </a>
+                    </td>
+                    <td>
+                        <form action="{% url 'status' order.order_id%}" method="post"> 
+                        {% csrf_token %}
+                        <div class="">
+                            {% if order.order_status == 'Pending' %}
+                            <select name="order_status" id="categories" required class="relative"  >
+                                <option selected disabled value="{{order.order_status}}"> {{order.order_status}}</option>
+                                    <option value="Confirm"> Confirm</option>
+                                    <option value="Delivere"> Delivered</option>
+                            </select>   
+                            <button type="submit">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="">
+                            {% elif order.order_status == 'Confirm' %}
+                            <select name="order_status" id="categories" required class="relative"  >
+                                <option selected disabled value="{{order.order_status}}"> {{order.order_status}}</option>
+                                    <option value="Delivere"> Delivered</option>
+                            </select>
+                            <button type="submit">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="">
+                            {% else %}
+                                {{order.order_status}}
+                            {% endif %}
+                        </div>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</center>
+{% endblock body %}
